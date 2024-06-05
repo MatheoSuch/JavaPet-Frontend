@@ -55,7 +55,7 @@ export const Registro = () => {
 		<Form onSubmit={handleSubmit} className="w-50 p-5">
 			<h1>Registro</h1>
 
-			{error ? <h3 className="errorStyle">{msgError}</h3> : ''}
+			{/* {error ? <h3 className="errorStyle">{msgError}</h3> : ''} */}
 			<Form.Group className="mb-3">
 				<Form.Label>Nombre</Form.Label>
 				<Form.Control

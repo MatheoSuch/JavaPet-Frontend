@@ -11,13 +11,21 @@ export const Login = () => {
 	const [errorMsg, setErrorMsg] = useState('');
 	// const navigate = useNavigate();
 
+	const handleSubmit = (e) => {
+		e.preventDefault();
+
+		//aca van las validaciones
+
+		startLogin(email, password);
+	};
+
 	const startLogin = async (email, password) => {
 		try {
-			const resp = await javaPetApi.post('/auth/', {
+			const resp = await javaPetApi.post('/auth/login', {
 				email,
 				password,
 			});
-
+			localStorage.setItem('token', resp.data.token);
 			if (resp.data.rol === 'usuario') {
 				// navigate('/shop');
 			} else {
@@ -33,20 +41,10 @@ export const Login = () => {
 			});
 		}
 	};
-
-	const handleSubmit = (e) => {
-		e.preventDefault();
-
-		//aca van las validaciones
-
-		startLogin(email, password);
-	};
 	return (
-		<Form onSubmit={handleSubmit} className="w-50 p-5">
-			<h1>Login</h1>
-
-			{error ? <h3 className="errorStyle">{errorMsg}</h3> : ''}
-			<Form.Group className="mb-3">
+		<Form onSubmit={handleSubmit}>
+			<h2>Login</h2>
+			<Form.Group>
 				<Form.Label>Email</Form.Label>
 				<Form.Control
 					type="email"
@@ -67,7 +65,7 @@ export const Login = () => {
 				/>
 			</Form.Group>
 			<Button variant="primary" type="submit">
-				Registrarse
+				Loguearse
 			</Button>
 		</Form>
 	);
