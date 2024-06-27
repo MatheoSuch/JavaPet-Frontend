@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Login } from '../components/auth/Login';
 import { Registro } from '../components/auth/Registro';
-import { AdminHome } from '../components/pages/AdminHome';
+import { AdminHome } from '../components/pages/admin/AdminHome';
 
 export const AppRouter = () => {
 	return (
