@@ -23,8 +23,8 @@ const NavBar = () => {
             {" "}
             <img
               src={logo}
-              width="80"
-              height="50"
+              width="100"
+              height="70"
               className="d-inline-block align-top"
               alt="Logo Rolling Vet"
             />

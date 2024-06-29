@@ -24,7 +24,8 @@ body::before {
   bottom: 0;
   background-color: rgba(255, 255, 255, 0.3); /* Color blanco semitransparente */
   pointer-events: none; /* Permite que los eventos de puntero pasen a través del pseudoelemento */
+  filter: blur(100px); /* Aplica el desenfoque */
   z-index: -1; /* Asegura que el pseudoelemento esté detrás del contenido del body */
-}
+  }
 
 
