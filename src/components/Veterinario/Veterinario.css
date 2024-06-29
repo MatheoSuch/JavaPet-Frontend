@@ -1,0 +1,47 @@
+.veterinario-title {
+  font-family: 'Poppins', sans-serif;
+  font-size: 48px;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 20px;
+  color: purple; /* O puedes usar #800080 para un morado específico */
+}
+.veterinario-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow-x: hidden; /* Esto evitará el desplazamiento horizontal */
+    .img-container {
+      padding: 12px;
+      margin: 0;
+      max-width: 100%; /* Establece el ancho máximo al 100% del contenedor */
+  }
+  .img-container {
+    padding: 12px;
+    margin: 0;
+    max-width: 100%; /* Establece el ancho máximo al 100% del contenedor */
+}
+
+.img-container img {
+    max-width: 100%; /* Establece el ancho máximo al 100% del contenedor */
+    height: auto; /* Permite que la altura se ajuste automáticamente para mantener la proporción */
+    width: 300px;
+    height: 200px;
+    border-radius: 10%;
+}
+     
+@media (max-width: 600px) {
+    .img-container p {
+      padding-left: 15px; 
+    }
+    .img-container img {
+      width: 200px; /* Establece el ancho deseado */
+      height: 150px; /* Establece la altura deseada */
+  }
+  }
+  
+      
+  
+      
+      
+  
