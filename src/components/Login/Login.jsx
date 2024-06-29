@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Col, Container, Form, Row } from "react-bootstrap";
 // import {Footer} from "../Footer/Footer";
 // import {NavBar} from "../NavBar/Navbar";
-import contacto from "../../assets/contactoIMG.jpeg";
+import contacto from "../../assets/contactoIMG.jpeg" ;
 import bcrypt from "bcryptjs/dist/bcrypt";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
