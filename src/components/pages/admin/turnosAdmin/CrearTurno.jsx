@@ -3,13 +3,13 @@ import Swal from 'sweetalert2';
 import Button from 'react-bootstrap/esm/Button';
 import Modal from 'react-bootstrap/Modal';
 import Form from 'react-bootstrap/Form';
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
 import javaPetApi from '../../../../api/javaPetApi';
-import DatePicker from 'react-datepicker'; // Importar react-datepicker
-import 'react-datepicker/dist/react-datepicker.css'; // Estilos de react-datepicker
 
 export const CrearTurno = ({ onTurnoCreado }) => {
-	// Recibe onTurnoCreado como prop
 	const [show, setShow] = useState(false);
+	const [isLoading, setIsLoading] = useState(false);
 	const [formData, setFormData] = useState({
 		detalleCita: '',
 		veterinario: '',
@@ -35,6 +35,8 @@ export const CrearTurno = ({ onTurnoCreado }) => {
 		e.preventDefault();
 		const { detalleCita, veterinario, mascota, especie, raza, fecha, hora } =
 			formData;
+
+		// Validaciones de campos
 		if (
 			!detalleCita ||
 			!veterinario ||
@@ -92,34 +94,7 @@ export const CrearTurno = ({ onTurnoCreado }) => {
 			});
 		}
 
-		const hoy = new Date();
-		const fechaTurno = new Date(fecha);
-		if (fechaTurno < hoy) {
-			return Swal.fire({
-				icon: 'error',
-				title: 'Oops...',
-				text: 'La fecha del turno no puede ser anterior a la fecha actual',
-			});
-		}
-
-		const horaTurno = parseInt(hora.split(':')[0], 10);
-		if (horaTurno < 8 || horaTurno >= 16) {
-			return Swal.fire({
-				icon: 'error',
-				title: 'Oops...',
-				text: 'La hora del turno debe estar entre las 8:00 y las 16:00',
-			});
-		}
-
-		console.log('Datos a enviar:', {
-			detalleCita,
-			veterinario,
-			mascota,
-			especie,
-			raza,
-			fecha,
-			hora,
-		});
+		setIsLoading(true); // Activar indicador de carga antes de enviar la solicitud
 
 		try {
 			const resp = await guardarTurnoDB(
@@ -128,11 +103,10 @@ export const CrearTurno = ({ onTurnoCreado }) => {
 				mascota,
 				especie,
 				raza,
-				fecha,
+				fecha.toISOString().split('T')[0], // Usar la fecha normalizada
 				hora
 			);
 
-			// Llamar a la función onTurnoCreado pasando el nuevo turno
 			if (resp.status === 201) {
 				Swal.fire({
 					icon: 'success',
@@ -160,6 +134,8 @@ export const CrearTurno = ({ onTurnoCreado }) => {
 				title: 'Oops...',
 				text: 'No se pudo crear el turno. Inténtalo de nuevo más tarde.',
 			});
+		} finally {
+			setIsLoading(false); // Desactivar indicador de carga después de manejar la solicitud
 		}
 	};
 
@@ -302,8 +278,13 @@ export const CrearTurno = ({ onTurnoCreado }) => {
 						<Button variant="secondary" onClick={handleClose}>
 							Cerrar
 						</Button>
-						<Button className="mx-3" variant="primary" type="submit">
-							Guardar cambios
+						<Button
+							className="mx-3"
+							variant="primary"
+							type="submit"
+							disabled={isLoading}
+						>
+							{isLoading ? 'Guardando...' : 'Guardar cambios'}
 						</Button>
 					</Form>
 				</Modal.Body>

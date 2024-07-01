@@ -6,7 +6,7 @@ export const eliminarPaciente = async (id, callback) => {
 		const resp = await javaPetApi.delete(`/admin/eliminarPaciente/${id}`);
 		console.log(resp);
 		if (callback) {
-			callback(); // Llama a la función de retorno de llamada para actualizar la lista de pacientes
+			callback();
 		}
 		Swal.fire({
 			icon: 'success',

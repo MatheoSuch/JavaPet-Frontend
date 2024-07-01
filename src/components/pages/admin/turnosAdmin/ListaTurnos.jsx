@@ -1,12 +1,13 @@
-import React, { useEffect, useState } from 'react';
-import javaPetApi from '../../../../api/javaPetApi';
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Table from 'react-bootstrap/Table';
 import Button from 'react-bootstrap/Button';
-import { useNavigate } from 'react-router-dom';
-import { eliminarTurno } from './EliminarTurno';
+import Swal from 'sweetalert2';
+import javaPetApi from '../../../../api/javaPetApi';
 import { format } from 'date-fns';
 import { EditarTurno } from './EditarTurno';
 import { CrearTurno } from './CrearTurno';
+import { eliminarTurno } from './EliminarTurno';
 
 export const ListaTurnos = () => {
 	const [cargarTurnos, setCargarTurnos] = useState([]);
@@ -18,21 +19,17 @@ export const ListaTurnos = () => {
 		try {
 			const resp = await javaPetApi.get('/admin/listaTurnos');
 			setCargarTurnos(resp.data.listaTurnos);
-
-			if (resp.data.rol === 'usuario') {
-				navigate('/shop');
-			} else {
-				navigate('/admin');
-			}
 		} catch (error) {
-			if (error.response.status === 401) {
+			if (error.response && error.response.status === 401) {
 				localStorage.removeItem('token');
-				navigate('/login', {
-					replace: true,
-				});
+				navigate('/login', { replace: true });
 			} else {
 				console.error('Error al cargar la lista de turnos:', error);
-				// Mostrar mensaje de error con Swal
+				Swal.fire({
+					icon: 'error',
+					title: 'Oops...',
+					text: 'No se pudo cargar la lista de turnos. Inténtalo de nuevo más tarde.',
+				});
 			}
 		}
 	};
@@ -56,17 +53,29 @@ export const ListaTurnos = () => {
 	};
 
 	const onUpdateTurno = (turnoActualizado) => {
-		const updatedTurnos = cargarTurnos.map((turno) => {
-			if (turno._id === turnoActualizado._id) {
-				return turnoActualizado;
-			}
-			return turno;
-		});
+		const updatedTurnos = cargarTurnos.map((turno) =>
+			turno._id === turnoActualizado._id ? turnoActualizado : turno
+		);
 		setCargarTurnos(updatedTurnos);
+	};
+
+	const handleEliminarClick = async (turnoId) => {
+		try {
+			await eliminarTurno(turnoId);
+			listaTurnosBack();
+		} catch (error) {
+			console.error('Error al eliminar el turno:', error);
+			Swal.fire({
+				icon: 'error',
+				title: 'Oops...',
+				text: 'No se pudo eliminar el turno. Inténtalo de nuevo más tarde.',
+			});
+		}
 	};
 
 	return (
 		<div>
+			<h2>Lista de Turnos</h2>
 			<CrearTurno onTurnoCreado={onTurnoCreado} />
 			<Table striped bordered hover>
 				<thead>
@@ -91,15 +100,15 @@ export const ListaTurnos = () => {
 							<td>{turno.mascota}</td>
 							<td>{turno.especie}</td>
 							<td>{turno.raza}</td>
-							<td>{format(new Date(turno.fecha), 'yyyy-MM-dd')}</td>
-							<td>{turno.hora}</td>
+							<td>{turno.fecha && format(new Date(turno.fecha), 'yyyy-MM-dd')}</td>
+							<td>{turno.hora && turno.hora.substring(0, 5)}</td>
 							<td>
 								<Button variant="dark" onClick={() => handleEditarClick(turno)}>
 									Editar
 								</Button>
 								<Button
 									variant="dark"
-									onClick={() => eliminarTurno(turno._id, listaTurnosBack)}
+									onClick={() => handleEliminarClick(turno._id)}
 								>
 									Eliminar
 								</Button>
@@ -113,7 +122,7 @@ export const ListaTurnos = () => {
 					turno={turnoSeleccionado}
 					show={showEditar}
 					handleClose={handleCloseEditar}
-					onUpdateTurno={onUpdateTurno} // Pasar onUpdateTurno como prop
+					onUpdateTurno={onUpdateTurno}
 				/>
 			)}
 		</div>

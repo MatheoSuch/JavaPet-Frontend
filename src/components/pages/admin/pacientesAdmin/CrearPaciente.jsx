@@ -1,17 +1,18 @@
 import React, { useState } from 'react';
 import Swal from 'sweetalert2';
-import javaPetApi from '../../../../api/javaPetApi';
 import Button from 'react-bootstrap/esm/Button';
 import Modal from 'react-bootstrap/Modal';
 import Form from 'react-bootstrap/Form';
+import javaPetApi from '../../../../api/javaPetApi';
 
-export const CrearUsuario = () => {
+export const CrearUsuario = ({ onUsuarioCreated }) => {
 	const [show, setShow] = useState(false);
 	const [formData, setFormData] = useState({
 		nombre: '',
 		apellido: '',
 		email: '',
 		telefono: '',
+		password: '',
 		rol: '',
 	});
 
@@ -28,10 +29,9 @@ export const CrearUsuario = () => {
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
-		const { nombre, apellido, email, telefono, rol } = formData;
+		const { nombre, apellido, email, telefono, password, rol } = formData;
 
-		// Validaciones
-		if (!nombre || !apellido || !email || !telefono || !rol) {
+		if (!nombre || !apellido || !email || !telefono || !password || !rol) {
 			return Swal.fire({
 				icon: 'error',
 				title: 'Oops...',
@@ -63,11 +63,19 @@ export const CrearUsuario = () => {
 			});
 		}
 
-		if (telefono.length < 6 || telefono.length > 15) {
+		if (telefono.length !== 10) {
 			return Swal.fire({
 				icon: 'error',
 				title: 'Oops...',
-				text: 'El teléfono debe tener entre 6 y 15 caracteres',
+				text: 'El teléfono debe tener exactamente 10 caracteres',
+			});
+		}
+
+		if (password.length < 6) {
+			return Swal.fire({
+				icon: 'error',
+				title: 'Oops...',
+				text: 'La contraseña debe tener al menos 6 caracteres',
 			});
 		}
 
@@ -80,20 +88,35 @@ export const CrearUsuario = () => {
 			});
 		}
 
-		console.log('Datos a enviar:', { nombre, apellido, email, telefono, rol });
+		console.log('Datos a enviar:', {
+			nombre,
+			apellido,
+			email,
+			telefono,
+			password,
+			rol,
+		});
 
-		await guardarUsuarioDB(nombre, apellido, email, telefono, rol);
+		await guardarUsuarioDB(nombre, apellido, email, telefono, password, rol);
 	};
 
-	const guardarUsuarioDB = async (nombre, apellido, email, telefono, rol) => {
+	const guardarUsuarioDB = async (
+		nombre,
+		apellido,
+		email,
+		telefono,
+		password,
+		rol
+	) => {
 		try {
 			const resp = await javaPetApi.post(
-				'/admin/crearUsuario',
+				'/admin/crearPaciente',
 				{
 					nombre,
 					apellido,
 					email,
 					telefono,
+					password,
 					rol,
 				},
 				{
@@ -116,9 +139,11 @@ export const CrearUsuario = () => {
 					apellido: '',
 					email: '',
 					telefono: '',
+					password: '',
 					rol: '',
 				});
 				setShow(false);
+				onUsuarioCreated();
 			} else {
 				throw new Error('Error al crear usuario');
 			}
@@ -133,7 +158,6 @@ export const CrearUsuario = () => {
 	};
 
 	const validateEmail = (email) => {
-		// Expresión regular para validar email básico
 		const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 		return regex.test(email);
 	};
@@ -183,6 +207,15 @@ export const CrearUsuario = () => {
 								type="text"
 								name="telefono"
 								value={formData.telefono}
+								onChange={handleInputChange}
+							/>
+						</Form.Group>
+						<Form.Group className="mb-3">
+							<Form.Label>Contraseña</Form.Label>
+							<Form.Control
+								type="password"
+								name="password"
+								value={formData.password}
 								onChange={handleInputChange}
 							/>
 						</Form.Group>

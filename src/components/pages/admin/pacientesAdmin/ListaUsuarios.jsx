@@ -4,9 +4,13 @@ import Table from 'react-bootstrap/Table';
 import javaPetApi from '../../../../api/javaPetApi';
 import { eliminarPaciente } from './EliminarPaciente';
 import Button from 'react-bootstrap/esm/Button';
+import { EditarPaciente } from './EditarPaciente';
+import { CrearUsuario } from './CrearPaciente';
 
 export const ListaUsuarios = () => {
 	const [cargarUsuarios, setCargarUsuarios] = useState([]);
+	const [showEditar, setShowEditar] = useState(false);
+	const [pacienteSeleccionado, setPacienteSeleccionado] = useState(null);
 
 	const listaUsuariosBack = async () => {
 		try {
@@ -19,12 +23,6 @@ export const ListaUsuarios = () => {
 					replace: true,
 				});
 			}
-			// Swal.fire({
-			// 	icon: 'error',
-			// 	title: 'Oops...',
-			// 	text: 'Error en algo',
-			// 	footer: '<a href="#">Why do I have this issue?</a>',
-			// });
 		}
 	};
 
@@ -32,8 +30,34 @@ export const ListaUsuarios = () => {
 		listaUsuariosBack();
 	}, []);
 
+	const handleEditarClick = (usuario) => {
+		setPacienteSeleccionado(usuario);
+		setShowEditar(true);
+	};
+
+	const handleCloseEditar = () => {
+		setShowEditar(false);
+		setPacienteSeleccionado(null);
+	};
+
+	const onUpdatePaciente = (pacienteActualizado) => {
+		const updatedPacientes = cargarUsuarios.map((usuario) => {
+			if (usuario._id === pacienteActualizado._id) {
+				return pacienteActualizado;
+			}
+			return usuario;
+		});
+		setCargarUsuarios(updatedPacientes);
+	};
+
+	const handleUsuarioCreated = () => {
+		listaUsuariosBack();
+	};
+
 	return (
 		<div>
+			<h2>Lista de Usuarios</h2>
+			<CrearUsuario onUsuarioCreated={handleUsuarioCreated} />
 			<Table striped bordered hover>
 				<thead>
 					<tr>
@@ -43,6 +67,7 @@ export const ListaUsuarios = () => {
 						<th>Email</th>
 						<th>Teléfono</th>
 						<th>Rol</th>
+						<th>Acciones</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -56,7 +81,7 @@ export const ListaUsuarios = () => {
 								<td>{usuario.telefono}</td>
 								<td>{usuario.rol}</td>
 								<td>
-									<Button variant="dark" onClick={() => EditarTurno(turno)}>
+									<Button variant="dark" onClick={() => handleEditarClick(usuario)}>
 										Editar
 									</Button>
 
@@ -72,6 +97,14 @@ export const ListaUsuarios = () => {
 					})}
 				</tbody>
 			</Table>
+			{pacienteSeleccionado && (
+				<EditarPaciente
+					paciente={pacienteSeleccionado}
+					show={showEditar}
+					handleClose={handleCloseEditar}
+					onUpdatePaciente={onUpdatePaciente}
+				/>
+			)}
 		</div>
 	);
 };
