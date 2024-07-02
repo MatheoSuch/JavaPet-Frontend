@@ -74,7 +74,7 @@ const Login = ({ user }) => {
     <div>
       {/* <NavBar /> */}
       <Container className="py-5">
-        <h1 className="font-celeste-crud">INICIE SESION</h1>
+        <h1 className="font-celeste-crud">INICIO DE SESION</h1>
         <hr />
         <div className="my-5">
           <Form className="my-5" onSubmit={handleSubmit} noValidate>
