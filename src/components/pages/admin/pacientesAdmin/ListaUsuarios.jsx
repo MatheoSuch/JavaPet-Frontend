@@ -3,9 +3,10 @@ import { Navigate } from 'react-router-dom';
 import Table from 'react-bootstrap/Table';
 import javaPetApi from '../../../../api/javaPetApi';
 import { eliminarPaciente } from './EliminarPaciente';
-import Button from 'react-bootstrap/esm/Button';
+import Button from 'react-bootstrap/Button';
 import { EditarPaciente } from './EditarPaciente';
 import { CrearUsuario } from './CrearPaciente';
+import './ListaUsuarios.css';
 
 export const ListaUsuarios = () => {
 	const [cargarUsuarios, setCargarUsuarios] = useState([]);
@@ -55,48 +56,56 @@ export const ListaUsuarios = () => {
 	};
 
 	return (
-		<div>
-			<h2>Lista de Usuarios</h2>
+		<div className="mt-5 mb-4">
+			<h2 className="text-center highlight">Lista de Usuarios</h2>
 			<CrearUsuario onUsuarioCreated={handleUsuarioCreated} />
-			<Table striped bordered hover>
-				<thead>
-					<tr>
-						<th>ID</th>
-						<th>Nombre</th>
-						<th>Apellido</th>
-						<th>Email</th>
-						<th>Teléfono</th>
-						<th>Rol</th>
-						<th>Acciones</th>
-					</tr>
-				</thead>
-				<tbody>
-					{cargarUsuarios.map((usuario) => {
-						return (
-							<tr key={usuario._id}>
-								<td>{usuario._id}</td>
-								<td>{usuario.nombre}</td>
-								<td>{usuario.apellido}</td>
-								<td>{usuario.email}</td>
-								<td>{usuario.telefono}</td>
-								<td>{usuario.rol}</td>
-								<td>
-									<Button variant="dark" onClick={() => handleEditarClick(usuario)}>
-										Editar
-									</Button>
-
-									<Button
-										variant="dark"
-										onClick={() => eliminarPaciente(usuario._id, listaUsuariosBack)}
-									>
-										Eliminar
-									</Button>
-								</td>
-							</tr>
-						);
-					})}
-				</tbody>
-			</Table>
+			<div className="table-responsive">
+				<Table striped bordered hover className="tabla-usuarios">
+					<thead>
+						<tr>
+							<th>ID</th>
+							<th>Nombre</th>
+							<th>Apellido</th>
+							<th>Email</th>
+							<th>Teléfono</th>
+							<th>Rol</th>
+							<th>Acciones</th>
+						</tr>
+					</thead>
+					<tbody>
+						{cargarUsuarios.map((usuario) => {
+							return (
+								<tr key={usuario._id}>
+									<td data-label="ID">{usuario._id}</td>
+									<td data-label="Nombre">{usuario.nombre}</td>
+									<td data-label="Apellido">{usuario.apellido}</td>
+									<td data-label="Email">{usuario.email}</td>
+									<td data-label="Teléfono">{usuario.telefono}</td>
+									<td data-label="Rol">{usuario.rol}</td>
+									<td data-label="Acciones">
+										<div className="acciones-container">
+											<Button
+												variant="primary"
+												onClick={() => handleEditarClick(usuario)}
+											>
+												Editar
+											</Button>
+											<Button
+												variant="danger"
+												onClick={() =>
+													eliminarPaciente(usuario._id, listaUsuariosBack)
+												}
+											>
+												Eliminar
+											</Button>
+										</div>
+									</td>
+								</tr>
+							);
+						})}
+					</tbody>
+				</Table>
+			</div>
 			{pacienteSeleccionado && (
 				<EditarPaciente
 					paciente={pacienteSeleccionado}

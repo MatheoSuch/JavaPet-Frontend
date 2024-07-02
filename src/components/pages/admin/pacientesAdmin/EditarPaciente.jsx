@@ -4,6 +4,8 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import Form from 'react-bootstrap/Form';
 import javaPetApi from '../../../../api/javaPetApi';
+import './pacienteCSS/EditarPaciente.css';
+import ModalFooter from 'react-bootstrap/esm/ModalFooter';
 
 export const EditarPaciente = ({
 	paciente,
@@ -161,7 +163,7 @@ export const EditarPaciente = ({
 	};
 
 	return (
-		<Modal show={show} onHide={handleClose}>
+		<Modal show={show} onHide={handleClose} className="modal-editar-paciente">
 			<Modal.Header closeButton>
 				<Modal.Title>Editar Paciente</Modal.Title>
 			</Modal.Header>
@@ -213,14 +215,16 @@ export const EditarPaciente = ({
 							<option value="usuario">Usuario</option>
 						</Form.Control>
 					</Form.Group>
-					<Button variant="secondary" onClick={handleClose}>
-						Cerrar
-					</Button>
-					<Button className="mx-3" variant="primary" type="submit">
-						Guardar cambios
-					</Button>
 				</Form>
 			</Modal.Body>
+			<ModalFooter>
+				<Button variant="secondary" onClick={handleClose}>
+					Cerrar
+				</Button>
+				<Button className="mx-3" variant="primary" type="submit">
+					Guardar cambios
+				</Button>
+			</ModalFooter>
 		</Modal>
 	);
 };

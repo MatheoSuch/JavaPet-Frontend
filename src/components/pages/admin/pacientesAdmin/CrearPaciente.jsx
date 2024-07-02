@@ -4,6 +4,7 @@ import Button from 'react-bootstrap/esm/Button';
 import Modal from 'react-bootstrap/Modal';
 import Form from 'react-bootstrap/Form';
 import javaPetApi from '../../../../api/javaPetApi';
+import './pacienteCSS/CrearPaciente.css';
 
 export const CrearUsuario = ({ onUsuarioCreated }) => {
 	const [show, setShow] = useState(false);
@@ -163,14 +164,20 @@ export const CrearUsuario = ({ onUsuarioCreated }) => {
 	};
 
 	return (
-		<div>
-			<Button className="my-3" variant="primary" onClick={handleShow}>
-				Nuevo Usuario
-			</Button>
+		<>
+			<div className="d-flex justify-content-start">
+				<Button
+					variant="primary"
+					onClick={handleShow}
+					className="mx-5 mx-md-auto nuevo-usuario-button"
+				>
+					Nuevo Usuario
+				</Button>
+			</div>
 
-			<Modal show={show} onHide={handleClose}>
+			<Modal show={show} onHide={handleClose} dialogClassName="modal-crear-usuario">
 				<Modal.Header closeButton>
-					<Modal.Title>Crear Usuario</Modal.Title>
+					<Modal.Title>Crear Nuevo Usuario</Modal.Title>
 				</Modal.Header>
 				<Modal.Body>
 					<Form onSubmit={handleSubmit}>
@@ -181,6 +188,7 @@ export const CrearUsuario = ({ onUsuarioCreated }) => {
 								name="nombre"
 								value={formData.nombre}
 								onChange={handleInputChange}
+								required
 							/>
 						</Form.Group>
 						<Form.Group className="mb-3">
@@ -190,6 +198,7 @@ export const CrearUsuario = ({ onUsuarioCreated }) => {
 								name="apellido"
 								value={formData.apellido}
 								onChange={handleInputChange}
+								required
 							/>
 						</Form.Group>
 						<Form.Group className="mb-3">
@@ -199,6 +208,7 @@ export const CrearUsuario = ({ onUsuarioCreated }) => {
 								name="email"
 								value={formData.email}
 								onChange={handleInputChange}
+								required
 							/>
 						</Form.Group>
 						<Form.Group className="mb-3">
@@ -208,6 +218,7 @@ export const CrearUsuario = ({ onUsuarioCreated }) => {
 								name="telefono"
 								value={formData.telefono}
 								onChange={handleInputChange}
+								required
 							/>
 						</Form.Group>
 						<Form.Group className="mb-3">
@@ -217,6 +228,7 @@ export const CrearUsuario = ({ onUsuarioCreated }) => {
 								name="password"
 								value={formData.password}
 								onChange={handleInputChange}
+								required
 							/>
 						</Form.Group>
 						<Form.Group className="mb-3">
@@ -226,6 +238,7 @@ export const CrearUsuario = ({ onUsuarioCreated }) => {
 								name="rol"
 								onChange={handleInputChange}
 								value={formData.rol || ''}
+								required
 							>
 								<option value="" disabled>
 									Seleccionar rol
@@ -235,15 +248,17 @@ export const CrearUsuario = ({ onUsuarioCreated }) => {
 							</Form.Control>
 						</Form.Group>
 
-						<Button variant="secondary" onClick={handleClose}>
-							Cerrar
-						</Button>
-						<Button className="mx-3" variant="primary" type="submit">
-							Guardar cambios
-						</Button>
+						<div className="d-flex justify-content-end">
+							<Button variant="secondary" onClick={handleClose} className="me-2">
+								Cerrar
+							</Button>
+							<Button variant="primary" type="submit">
+								Guardar Usuario
+							</Button>
+						</div>
 					</Form>
 				</Modal.Body>
 			</Modal>
-		</div>
+		</>
 	);
 };

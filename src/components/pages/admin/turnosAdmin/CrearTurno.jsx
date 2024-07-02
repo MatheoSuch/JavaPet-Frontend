@@ -6,6 +6,7 @@ import Form from 'react-bootstrap/Form';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import javaPetApi from '../../../../api/javaPetApi';
+import './turnoCSS/CrearTurno.css';
 
 export const CrearTurno = ({ onTurnoCreado }) => {
 	const [show, setShow] = useState(false);
@@ -182,9 +183,15 @@ export const CrearTurno = ({ onTurnoCreado }) => {
 
 	return (
 		<div>
-			<Button className="my-3" variant="primary" onClick={handleShow}>
-				Nuevo Turno
-			</Button>
+			<div className="d-flex justify-content-start">
+				<Button
+					variant="primary"
+					onClick={handleShow}
+					className="mx-5 mx-md-auto nuevo-turno-button"
+				>
+					Nuevo Usuario
+				</Button>
+			</div>
 
 			<Modal show={show} onHide={handleClose}>
 				<Modal.Header closeButton>
