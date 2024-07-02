@@ -1,0 +1,98 @@
+/* Estilo general del componente */
+.planes-container {
+    max-width: 800px; /* Ancho máximo del contenedor */
+    margin: 0 auto; /* Centrar horizontalmente */
+    padding: 20px; /* Espaciado interno */
+  }
+  
+  /* Estilos de los divs de planes */
+  .plan {
+    display: flex; /* Utilizar flexbox para alinear elementos */
+    margin-bottom: 20px; /* Espaciado inferior entre divs */
+  }
+  
+  /* Estilos de las imágenes */
+  .plan-image {
+    flex: 1; /* Ocupar la mitad del espacio disponible */
+    
+  }
+    
+  .plan-image img {
+  width: 100%; /* Ocupar todo el ancho del contenedor */
+  height: 100%; /* Ocupar todo el alto del contenedor */
+  object-fit: cover; /* Escalar la imagen para que llene el contenedor */
+  transition: transform 0.3s ease-in-out; /* Transición suave al agrandar */
+  
+}
+
+.plan-image img:hover {
+  transform: scale(1.1); /* Agrandar la imagen en un 10% */
+}
+
+
+  .plan-description {
+    flex: 1; /* Ocupar la otra mitad del espacio disponible */
+    background-color: transparent; /* Fondo blanco */
+    padding: 20px; /* Espaciado interno */
+    font-size: 2em;
+  }
+
+  .plan-description p{
+    color: black;
+    margin-top: 0;
+    margin-bottom: 1rem;
+    background-color: transparent;
+  }
+  
+  .titulo-planes {
+    font-family: 'Poppins', sans-serif;
+    font-size: 48px;
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 20px;
+    color: purple; 
+    font-size: 3em; /* Tamaño del título destacado */
+    text-align: center;
+  }
+  
+
+  @media (max-width: 768px) {
+    .planes-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .plan{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 20px; /* Espacio entre cada plan */
+    }
+    #divReverse{
+      display: flex;
+      flex-direction: column-reverse;
+      align-items: center;
+      margin-bottom: 20px; /* Espacio entre cada plan */
+    }
+  
+    .plan-description,
+    .plan-image {
+      width: 100%; /* Ocupa todo el ancho disponible */
+      text-align: center; /* Centra el texto */
+    }
+  
+    .plan-image img {
+      max-width: 100%; /* Asegura que la imagen no se desborde del contenedor */
+    }
+    .plan-description p{
+    
+      font-size: 25px;
+    }
+    @media (max-width: 320px) {
+      .titulo-planes {
+        font-size: 1em; /* Ajustar tamaño del título para pantallas muy pequeñas */
+      }
+  }
+
+  
