@@ -1,15 +1,17 @@
 import React from 'react';
 import { ListaUsuarios } from './pacientesAdmin/ListaUsuarios';
 import { ListaTurnos } from './turnosAdmin/ListaTurnos';
-import FotoAdminHome from '../../../img/FotoAdminHome.jpg';
 import './AdminHome.css';
+import NavBar from '../../Navbar/Navbar';
+import Footer from '../../Footer/Footer';
 
 export const AdminHome = () => {
 	return (
-		<div className="admin-home" style={{ backgroundImage: `url(${FotoAdminHome})` }}>
-			<div className="overlay"></div>
+		<div>
+			<NavBar />
 			<ListaUsuarios />
 			<ListaTurnos />
+			<Footer />
 		</div>
 	);
 };
