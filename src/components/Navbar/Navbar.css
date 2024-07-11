@@ -1,0 +1,190 @@
+.font-celeste-crud {
+	color: #000000;
+	font-weight: bold;
+}
+.colorfuente {
+	color: #218b99;
+}
+.nav-link {
+	font-size: 18px !important;
+	font-weight: bold;
+	transition: color 0.3s ease, background-color 0.3s ease;
+}
+
+.nav-link.custom-nav-link {
+	color: rgb(255, 255, 255);
+	font-size: 16px;
+	text-decoration: solid !important;
+	transition: color 0.3s ease, transform 0.3s ease !important;
+	display: flex;
+	align-items: center;
+}
+
+.nav-link.custom-nav-link:hover {
+	color: #000000;
+	background-color: rgba(193, 1, 241, 0.1);
+	border-radius: 5px;
+}
+
+.navbar-toggler-custom {
+	border-color: #000000 !important;
+}
+
+.navbar-brand img {
+	width: 65px;
+	height: 50px;
+}
+
+.navbar {
+	background-color: #237ab4 !important;
+	padding: 8px 0 !important;
+}
+
+.bg-celeste {
+	background-color: rgb(71, 190, 211);
+}
+
+.bg-celeste-crud {
+	background-color: #218b99;
+}
+
+.bg-cardpp {
+	background-color: rgb(247, 173, 175);
+}
+
+.bg-cardm {
+	background-color: rgb(125, 172, 198);
+}
+
+.btn-celeste {
+	color: rgb(81, 168, 177);
+}
+
+.bg-card-turnos {
+	background-color: #7dacc6;
+}
+
+.btn-outline-celeste {
+	color: white;
+	border-color: #218b99;
+}
+.btn-outline-celeste:hover {
+	color: #fff;
+	background-color: #218b99;
+	border-color: #218b99;
+}
+
+.btn-celeste-crud {
+	min-width: 100px;
+	height: 60px;
+	line-height: 50px;
+	color: #fff;
+	padding: 5px 10px;
+	font-weight: bold;
+	cursor: pointer;
+	transition: all 0.3s ease;
+	position: relative;
+	display: inline-block;
+	outline: none;
+	border-radius: 5px;
+	z-index: 0;
+	background: #fff;
+	overflow: hidden;
+	border: 2px solid #218b99;
+	color: #218b99;
+}
+.btn-celeste-crud:hover {
+	color: #fff;
+}
+.btn-celeste-crud:hover:after {
+	width: 100%;
+}
+.btn-celeste-crud:after {
+	content: '';
+	position: absolute;
+	z-index: -1;
+	transition: all 0.3s ease;
+	left: 0;
+	top: 0;
+	width: 0;
+	height: 100%;
+	background: #218b99;
+}
+.btn-celeste-serv {
+	min-width: 50px;
+	height: 40px;
+	line-height: 25px;
+	color: #fff;
+	padding: 5px;
+	font-weight: bold;
+	cursor: pointer;
+	transition: all 0.3s ease;
+	position: relative;
+	display: inline-block;
+	outline: none;
+	border-radius: 15px;
+	z-index: 0;
+	background: #fff;
+	overflow: hidden;
+	border: 2px solid #218b99;
+	color: #218b99;
+}
+.btn-celeste-serv:hover {
+	color: #fff;
+}
+.btn-celeste-serv:hover:after {
+	width: 100%;
+}
+.btn-celeste-serv:after {
+	content: '';
+	position: absolute;
+	z-index: -1;
+	transition: all 0.3s ease;
+	left: 0;
+	top: 0;
+	width: 0;
+	height: 100px;
+	background: #218b99;
+}
+
+/*btn red crud*/
+.btn-red-crud {
+	min-width: 100px;
+	height: 60px;
+	line-height: 50px;
+	color: #fff;
+	padding: 5px 10px;
+	font-weight: bold;
+	cursor: pointer;
+	transition: all 0.3s ease;
+	position: relative;
+	display: inline-block;
+	outline: none;
+	border-radius: 5px;
+	z-index: 0;
+	background: #fff;
+	overflow: hidden;
+	border: 2px solid #c02942;
+	color: #c02942;
+}
+.btn-red-crud:hover {
+	color: #fff;
+}
+.btn-red-crud:hover:after {
+	width: 100%;
+}
+.btn-red-crud:after {
+	content: '';
+	position: absolute;
+	z-index: -1;
+	transition: all 0.3s ease;
+	left: 0;
+	top: 0;
+	width: 0;
+	height: 100%;
+	background: #c02942;
+}
+
+.border-celeste-crud {
+	border: 20px solid #218b99;
+}

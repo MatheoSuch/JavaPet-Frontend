@@ -1,0 +1,63 @@
+/* Estilos para el formulario de registro */
+
+/* Estilos generales */
+.form-group {
+	margin-bottom: 20px;
+}
+
+.text-muted {
+	font-size: 14px;
+	color: #6c757d;
+}
+
+/* Estilos para etiquetas */
+.form-label {
+	color: #000000;
+	font-weight: bold;
+}
+
+/* Estilos para inputs */
+.form-control {
+	border-radius: 5px;
+	border-color: #000000;
+}
+
+.form-control:focus {
+	border-color: #000000;
+	box-shadow: 0 0 0 0.2rem rgba(59, 242, 248, 0.863);
+}
+
+/* Estilos para checkbox */
+.form-check-label {
+	color: #006172;
+	font-weight: bold;
+}
+
+/* Estilos para botón */
+.btn-primary {
+	background-color: #218b99;
+	border-color: #000000;
+	font-weight: bold;
+	transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover {
+	background-color: #07c1da;
+	border-color: #000000;
+}
+
+.btn-primary:focus {
+	box-shadow: 0 0 0 0.2rem rgba(33, 139, 153, 0.5);
+}
+
+.registro-form-container {
+	background-color: rgba(45, 153, 185, 0.685); /* Color de fondo con opacidad */
+	padding: 10px;
+	border-radius: 30px;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */ /* Sombra opcional para resaltar */
+}
+
+.registro-image-container {
+	margin-top: 20px; /* Ejemplo de margen superior */
+	padding: 10px; /* Ejemplo de relleno */
+}

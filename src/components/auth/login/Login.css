@@ -1,0 +1,14 @@
+.register-question {
+	color: #000;
+}
+
+.register-link {
+	color: #007bff;
+	text-decoration: none;
+	font-weight: bold;
+}
+
+.register-link:hover {
+	color: #0056b3;
+	text-decoration: underline;
+}

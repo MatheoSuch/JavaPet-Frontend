@@ -1,0 +1,142 @@
+.contenedor {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: calc(100vh - 100px); /
+    padding: 50px 20px; 
+    box-sizing: border-box;
+    
+    
+}
+
+
+.contenido {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    padding: 20px;
+    box-sizing: border-box;
+    background-color: rgb(250, 250, 250); 
+    border-radius: 15px; 
+    box-shadow: 0 0 10px rgba(241, 240, 240, 0.1); 
+    
+}
+
+
+.contenedorTitulos {
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+.contenedorTitulos h1 {
+    font-size: 2.5em;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.contenedorTitulos h3 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+
+.contenedorTitulos h4 {
+    font-size: 1.2em;
+    margin-bottom: 20px;
+}
+
+
+#mi-formulario {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    
+}
+
+.nombre-apellido-group, .correo-tel-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+
+.nombre-apellido-group .col, .correo-tel-group .col {
+    display: flex;
+    flex-direction: column;
+}
+
+.customLabel {
+    border-radius: 5px; 
+    padding: 10px; 
+    border: 1px solid #ccc;
+    font-size: 1em;
+    color: aliceblue;
+}
+
+#areaTexto {
+    width: 100%;
+    resize: none;
+    border-radius: 5px; 
+    padding: 10px; 
+    border: 1px solid #ccc; 
+    margin-bottom: 20px;
+}
+
+
+.botonEnviar {
+    width: 100%;
+    background-color: black;
+    border: none;
+    color: white;
+    padding: 10px;
+    font-size: 1.2em;
+    cursor: pointer;
+    border-radius: 5px; 
+}
+
+.botonEnviar:hover {
+    background-color: #333;
+}
+
+/
+.imagen-container {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.imagen {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+
+@media (max-width: 1024px) {
+    .contenedor {
+        flex-direction: column;
+        padding: 20px; 
+    }
+
+    .contenido, .imagen-container {
+        width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    .contenedorTitulos h1 {
+        font-size: 2em;
+    }
+
+    .contenedorTitulos h3 {
+        font-size: 1.2em;
+    }
+
+    .contenedorTitulos h4 {
+        font-size: 1em;
+    }
+
+    .botonEnviar {
+        font-size: 1em;
+    }
+}

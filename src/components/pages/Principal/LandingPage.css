@@ -1,0 +1,10 @@
+body {
+	margin: 0;
+	padding: 0;
+}
+.contenedor-padre {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+}
