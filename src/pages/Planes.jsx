@@ -3,6 +3,13 @@ import Swal from "sweetalert2";
 import emailjs from "emailjs-com";
 import "../css/planes.css";
 
+import bannerImg from "../assets/img-planes/Planes/Banner.png";
+import planImg1 from "../assets/img-planes/Planes/Rectangle 4296.png";
+import texturaImg from "../assets/img-planes/textura.png";
+import planImg2 from "../assets/img-planes/Planes/Cacho-e-gato-juntos-no-chao-posando-pra-foto_3.webp";
+import planImg3 from "../assets/img-planes/Planes/186654806-adorable-gato-y-perro-sobre-fondo-blanco-lindos-amigos.jpg";
+import iconoPatita from "../assets/img-planes/icono patita.png";
+
 export const Planes = () => {
   const [modalVisible, setModalVisible] = useState(false);
   const [selectedPlan, setSelectedPlan] = useState(null);
@@ -20,7 +27,7 @@ export const Planes = () => {
     e.preventDefault();
 
     emailjs
-      .sendForm("service_0q3qw0r", "template_e8gzu9x", e.target, "yABYGQbq-y8zvNKml")
+      .sendForm("service_bi1p8tt", "template_9jzy2qr", e.target, "PKhKvnJcKT-OtLOyJ")
       .then(
         (result) => {
           console.log(result.text);
@@ -45,7 +52,7 @@ export const Planes = () => {
   return (
     <>
       <div className="banner">
-        <img src="src/assets/img-planes/Planes/Banner.png" alt="Banner" style={{ width: "100%" }} />
+        <img src={bannerImg} alt="Banner" style={{ width: "100%" }} />
         <div className="texto-y-boton-encima">
           <div className="texto-banner-izquierda">
             <h2 className="subtitulo">Nuestros mejores planes para tu peludito</h2>
@@ -70,7 +77,7 @@ export const Planes = () => {
 
       <div className="plan-container">
         <div className="imagen-plan">
-          <img src="src/assets/img-planes/Planes/Rectangle 4296.png" alt="Descripción de la imagen" style={{ width: "100%" }} />
+          <img src={planImg1} alt="Descripción de la imagen" style={{ width: "100%" }} />
         </div>
 
         <div className="contenido-plan plan-basico">
@@ -92,7 +99,7 @@ export const Planes = () => {
             - Descuentos en servicios adicionales como consultas de emergencia y análisis de laboratorio.
             <br />- Acceso a consejos y recomendaciones personalizadas para el cuidado de tu mascota.
           </h3>
-          <img src="src/assets/img-planes/textura.png" alt="Imagen de fondo" style={{ width: "100%", height: "397px", marginTop: "-350px" }} />
+          <img src={texturaImg} alt="Imagen de fondo" style={{ width: "100%", height: "397px", marginTop: "-350px" }} />
           <div className="overlay">
             <h1>PRECIO: 12.520$ MENSUALES</h1>
             <button onClick={() => openModal("Plan Básico")}>Pedir más información</button>
@@ -102,22 +109,22 @@ export const Planes = () => {
 
       <div className="beneficios">
         <div className="beneficio">
-          <img src="src/assets/img-planes/icono patita.png" alt="Chequeo Anual" />
+          <img src={iconoPatita} alt="Chequeo Anual" />
           <h4>Chequeo Anual</h4>
           <p>Completo con nuestro veterinario.</p>
         </div>
         <div className="beneficio">
-          <img src="src/assets/img-planes/icono patita.png" alt="Vacunas Básicas" />
+          <img src={iconoPatita} alt="Vacunas Básicas" />
           <h4>Vacunas Básicas</h4>
           <p>Para la protección contra enfermedades comunes.</p>
         </div>
         <div className="beneficio">
-          <img src="src/assets/img-planes/icono patita.png" alt="Desparasitación Anual" />
+          <img src={iconoPatita} alt="Desparasitación Anual" />
           <h4>Desparasitación Anual</h4>
           <p>Para prevenir infestaciones de parásitos.</p>
         </div>
         <div className="beneficio">
-          <img src="src/assets/img-planes/icono patita.png" alt="Descuentos" />
+          <img src={iconoPatita} alt="Descuentos" />
           <h4>Descuentos</h4>
           <p>En servicios adicionales como consultas de emergencia.</p>
         </div>
@@ -125,7 +132,7 @@ export const Planes = () => {
 
       <div className="plan-container">
         <div className="imagen-plan">
-          <img src="src/assets/img-planes/Planes/Cacho-e-gato-juntos-no-chao-posando-pra-foto_3.webp" alt="Descripción de la imagen" style={{ width: "108.2%" }} />
+          <img src={planImg2} alt="Descripción de la imagen" style={{ width: "108.2%" }} />
         </div>
 
         <div className="contenido-plan plan-basico-2">
@@ -147,7 +154,7 @@ export const Planes = () => {
             - Descuentos en servicios adicionales como consultas de emergencia y análisis de laboratorio.
             <br />- Acceso a consejos y recomendaciones personalizadas para el cuidado de tu mascota.
           </h3>
-          <img src="src/assets/img-planes/textura.png" alt="Imagen de fondo" style={{ width: "100%", height: "397px", marginTop: "-350px" }} />
+          <img src={texturaImg} alt="Imagen de fondo" style={{ width: "100%", height: "397px", marginTop: "-350px" }} />
           <div className="overlay">
             <h1>PRECIO: 20.520$ MENSUALES</h1>
             <button onClick={() => openModal("Plan Básico Plus")}>Pedir más información</button>
@@ -157,22 +164,22 @@ export const Planes = () => {
 
       <div className="beneficios">
         <div className="beneficio">
-          <img src="src/assets/img-planes/icono patita.png" alt="Chequeo Anual" />
+          <img src={iconoPatita} alt="Chequeo Anual" />
           <h4>Chequeo Anual</h4>
           <p>Completo con nuestro veterinario.</p>
         </div>
         <div className="beneficio">
-          <img src="src/assets/img-planes/icono patita.png" alt="Vacunas Básicas" />
+          <img src={iconoPatita} alt="Vacunas Básicas" />
           <h4>Vacunas Básicas</h4>
           <p>Para la protección contra enfermedades comunes.</p>
         </div>
         <div className="beneficio">
-          <img src="src/assets/img-planes/icono patita.png" alt="Desparasitación Anual" />
+          <img src={iconoPatita} alt="Desparasitación Anual" />
           <h4>Desparasitación Anual</h4>
           <p>Para prevenir infestaciones de parásitos.</p>
         </div>
         <div className="beneficio">
-          <img src="src/assets/img-planes/icono patita.png" alt="Descuentos" />
+          <img src={iconoPatita} alt="Descuentos" />
           <h4>Descuentos</h4>
           <p>En servicios adicionales como consultas de emergencia.</p>
         </div>
@@ -180,7 +187,7 @@ export const Planes = () => {
 
       <div className="plan-container">
         <div className="imagen-plan">
-          <img src="src/assets/img-planes/Planes/186654806-adorable-gato-y-perro-sobre-fondo-blanco-lindos-amigos.jpg" alt="Descripción de la imagen" style={{ width: "76%" }} />
+          <img src={planImg3} alt="Descripción de la imagen" style={{ width: "76%" }} />
         </div>
 
         <div className="contenido-plan plan-basico-3">
@@ -202,9 +209,9 @@ export const Planes = () => {
             - Descuentos en servicios adicionales como consultas de emergencia y análisis de laboratorio.
             <br />- Acceso a consejos y recomendaciones personalizadas para el cuidado de tu mascota.
           </h3>
-          <img src="src/assets/img-planes/textura.png" alt="Imagen de fondo" style={{ width: "100%", height: "397px", marginTop: "-350px" }} />
+          <img src={texturaImg} alt="Imagen de fondo" style={{ width: "100%", height: "397px", marginTop: "-350px" }} />
           <div className="overlay">
-            <h1>PRECIO: 20.520$ MENSUALES</h1>
+            <h1>PRECIO: 25.520$ MENSUALES</h1>
             <button onClick={() => openModal("Plan Básico Premium")}>Pedir más información</button>
           </div>
         </div>
@@ -212,22 +219,22 @@ export const Planes = () => {
 
       <div className="beneficios">
         <div className="beneficio">
-          <img src="src/assets/img-planes/icono patita.png" alt="Chequeo Anual" />
+          <img src={iconoPatita} alt="Chequeo Anual" />
           <h4>Chequeo Anual</h4>
           <p>Completo con nuestro veterinario.</p>
         </div>
         <div className="beneficio">
-          <img src="src/assets/img-planes/icono patita.png" alt="Vacunas Básicas" />
+          <img src={iconoPatita} alt="Vacunas Básicas" />
           <h4>Vacunas Básicas</h4>
           <p>Para la protección contra enfermedades comunes.</p>
         </div>
         <div className="beneficio">
-          <img src="src/assets/img-planes/icono patita.png" alt="Desparasitación Anual" />
+          <img src={iconoPatita} alt="Desparasitación Anual" />
           <h4>Desparasitación Anual</h4>
           <p>Para prevenir infestaciones de parásitos.</p>
         </div>
         <div className="beneficio">
-          <img src="src/assets/img-planes/icono patita.png" alt="Descuentos" />
+          <img src={iconoPatita} alt="Descuentos" />
           <h4>Descuentos</h4>
           <p>En servicios adicionales como consultas de emergencia.</p>
         </div>
