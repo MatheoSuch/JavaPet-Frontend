@@ -36,7 +36,7 @@ const Bienvenida = () => {
 					target="_blank"
 					rel="noopener noreferrer"
 				>
-					PEDI TU CITA AHORA!
+					RESERVA TU CITA AHORA!
 				</a>
 			</div>
 		</div>

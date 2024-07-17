@@ -1,15 +1,70 @@
+/* turnoCSS/CrearTurno.css */
+
 .nuevo-turno-button {
-	background-color: #237ab4 !important; /* Color de fondo del botón */
-	border-color: #000000 !important; /* Color del borde del botón */
-	color: #ffffff; /* Color del texto */
-	border-radius: 5px; /* Borde redondeado */
-	padding: 10px 20px; /* Espaciado interno */
-	font-size: 1rem; /* Tamaño de fuente */
+	background-color: #5cbbfb !important;
+	border-color: #000000 !important;
+	border-radius: 5px;
+	font-size: 1rem;
 	transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
 }
 
 .nuevo-turno-button:hover {
-	background-color: #3255c9 !important; /* Color de fondo al pasar el mouse */
-	border-color: #000000 !important; /* Color del borde al pasar el mouse */
-	color: #f0f0f0 !important; /* Color del texto al pasar el mouse */
+	color: #f0f0f0 !important;
+}
+
+.modal-crear-turno .modal-content {
+	background-color: #ffffff;
+	border-radius: 15px;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.modal-crear-turno .modal-header {
+	background-color: #237ab4;
+	color: #ffffff;
+	border-bottom: none;
+	border-radius: 15px 15px 0 0;
+}
+
+.modal-crear-turno .modal-title {
+	font-size: 1.5rem;
+}
+
+.modal-crear-turno .modal-body {
+	padding: 20px;
+}
+
+.modal-crear-turno .modal-footer {
+	border-top: none;
+	padding: 15px 20px;
+	justify-content: flex-end;
+}
+
+.modal-crear-turno .form-control {
+	border: 1px solid #ced4da;
+	border-radius: 5px;
+}
+
+.modal-crear-turno .form-control:focus {
+	border-color: #000000;
+	box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+.modal-crear-turno .btn-primary {
+	background-color: #237ab4;
+	border-color: #000000;
+}
+
+.modal-crear-turno .btn-primary:hover {
+	background-color: #0b2d9c;
+	border-color: #000000;
+}
+
+.modal-crear-turno .btn-secondary {
+	background-color: #800404;
+	border-color: #000000;
+}
+
+.modal-crear-turno .btn-secondary:hover {
+	background-color: #ff0000;
+	border-color: #000000;
 }

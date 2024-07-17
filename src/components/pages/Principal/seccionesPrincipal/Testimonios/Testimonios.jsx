@@ -13,8 +13,8 @@ export const Testimonios = () => {
 					<img src={testimonio1} alt="Maria" className="img-circle" />
 					<h2>Mario</h2>
 					<p>
-						"Excelente Atención, el profesionalismo de los Veterinarios me lleno de
-						seguridad y confianza, para la operación de mi gatito."
+						"Excelente profesionalismo de los Veterinarios me dio de seguridad y
+						confianza, para la operación de mi gato."
 					</p>
 				</div>
 
@@ -22,9 +22,8 @@ export const Testimonios = () => {
 					<img src={testimonio2} alt="Lucas" className="img-circle" />
 					<h2>Lucia</h2>
 					<p>
-						"Llegamos con una urgencia con mi caniche y me brindaron todo el apoyo
-						necesario para salir adelante y tener en casa en pocos dias a mi
-						perrito."
+						"Llegué con una urgencia y me brindaron todo el apoyo necesario para
+						solucionarla y tener en casa en pocos dias a mi perrito."
 					</p>
 				</div>
 

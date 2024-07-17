@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Swal from 'sweetalert2';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
@@ -6,9 +6,34 @@ import Form from 'react-bootstrap/Form';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import javaPetApi from '../../../../api/javaPetApi';
+import './turnoCSS/EditarTurno.css';
 
 export const EditarTurno = ({ turno, show, handleClose, onUpdateTurno }) => {
-	const [turnoEditSelecc, setTurnoEditSelecc] = useState({ ...turno });
+	const [turnoEditSelecc, setTurnoEditSelecc] = useState({
+		detalleCita: '',
+		veterinario: '',
+		mascota: '',
+		especie: '',
+		raza: '',
+		fecha: new Date(),
+		hora: '',
+	});
+
+	// Utiliza useEffect para actualizar turnoEditSelecc cuando cambia la prop turno
+	useEffect(() => {
+		if (turno) {
+			setTurnoEditSelecc({
+				id: turno._id,
+				detalleCita: turno.detalleCita || '',
+				veterinario: turno.veterinario || '',
+				mascota: turno.mascota || '',
+				especie: turno.especie || '',
+				raza: turno.raza || '',
+				fecha: turno.fecha ? new Date(turno.fecha) : new Date(),
+				hora: turno.hora || '',
+			});
+		}
+	}, [turno]);
 
 	const handleChangeEditar = (propiedad, valor) => {
 		setTurnoEditSelecc({
@@ -98,7 +123,7 @@ export const EditarTurno = ({ turno, show, handleClose, onUpdateTurno }) => {
 		}
 
 		const horaTurno = parseInt(hora.split(':')[0], 10);
-		if (horaTurno < 8 || horaTurno >= 16) {
+		if (horaTurno < 8 || horaTurno > 16) {
 			Swal.fire({
 				icon: 'error',
 				title: 'Oops...',
@@ -112,7 +137,8 @@ export const EditarTurno = ({ turno, show, handleClose, onUpdateTurno }) => {
 
 	const editarTurnoDB = async (turno) => {
 		try {
-			const resp = await javaPetApi.put('/admin/editarTurno', turno);
+			console.log('Enviando solicitud para editar turno con ID:', turno.id);
+			const resp = await javaPetApi.put(`/admin/editarTurno/${turno.id}`, turno);
 			if (resp.status === 200) {
 				Swal.fire({
 					icon: 'success',
@@ -141,12 +167,12 @@ export const EditarTurno = ({ turno, show, handleClose, onUpdateTurno }) => {
 	};
 
 	return (
-		<Modal show={show} onHide={handleClose}>
+		<Modal show={show} onHide={handleClose} className="modal-editar-turno">
 			<Modal.Header closeButton>
 				<Modal.Title>Editar Turno</Modal.Title>
 			</Modal.Header>
 			<Modal.Body>
-				<Form onSubmit={handleSubmitEditar}>
+				<Form onSubmit={handleSubmitEditar} className="formulario-editar-turno">
 					<Form.Group className="mb-3">
 						<Form.Label>Detalle de la cita</Form.Label>
 						<Form.Control
@@ -211,13 +237,11 @@ export const EditarTurno = ({ turno, show, handleClose, onUpdateTurno }) => {
 					<Form.Group className="mb-3">
 						<Form.Label>Fecha</Form.Label>
 						<DatePicker
-							selected={new Date(turnoEditSelecc.fecha)}
-							onChange={(date) =>
-								handleChangeEditar('fecha', date.toISOString().split('T')[0])
-							}
-							minDate={new Date()}
+							selected={turnoEditSelecc.fecha}
+							onChange={(date) => handleChangeEditar('fecha', date)}
 							className="form-control"
 							dateFormat="yyyy-MM-dd"
+							minDate={new Date()}
 						/>
 						<Form.Control.Feedback type="invalid">
 							Seleccione una fecha válida
@@ -244,15 +268,19 @@ export const EditarTurno = ({ turno, show, handleClose, onUpdateTurno }) => {
 							<option value="16:00">16:00</option>
 						</Form.Control>
 						<Form.Control.Feedback type="invalid">
-							Seleccione una hora válida
+							Seleccione una hora válida (entre 8:00 y 16:00)
 						</Form.Control.Feedback>
 					</Form.Group>
-					<Button variant="secondary" onClick={handleClose}>
-						Cerrar
-					</Button>
-					<Button className="mx-3" variant="primary" type="submit">
-						Guardar cambios
-					</Button>
+					<Modal.Footer>
+						<div className="d-flex justify-content-end">
+							<Button variant="secondary" onClick={handleClose} className="me-2">
+								Cerrar
+							</Button>
+							<Button variant="primary" type="submit">
+								Guardar Cambios
+							</Button>
+						</div>
+					</Modal.Footer>
 				</Form>
 			</Modal.Body>
 		</Modal>

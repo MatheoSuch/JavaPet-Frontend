@@ -1,34 +1,57 @@
-.custom-carousel-container {
-    width: 100%; /* Ancho completo */
-    /* height: 300px;  */
-  }
-  
-  .custom-carousel-item {
-    height: 100%; /* Asegura que el contenido ocupe la altura completa del contenedor */
-  }
-  
-  .custom-carousel-item img {
-    height: 350px;
-    max-height: 100%; 
-    object-fit: contain; /* Asegura que la imagen se ajuste dentro del contenedor manteniendo su proporción */
-  }
-  /* Slider.css */
 .slider-title {
-  font-family: 'Poppins', sans-serif;
-  font-size: 48px;
-  font-weight: 600;
-  text-align: center;
-  margin-bottom: 20px;
-  color: purple; /* O puedes usar #800080 para un morado específico */
+	font-size: 2.9em;
+	color: purple;
+	margin: 20px 0;
+	margin-top: -5px !important;
+	transition: font-size 0.3s ease;
+	font-weight: bolder;
+	text-align: center;
+	text-shadow: 0 1px 3px rgba(21, 168, 187, 0.719);
+	text-decoration: underline;
 }
 
-@media (max-width: 320px) {
-  .slider-title {
-    font-size: 1em; /* Ajustar tamaño del título para pantallas muy pequeñas */
-  }
-
+.custom-carousel-container {
+	padding: 0 20px;
 }
 
+.custom-carousel-item {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 10px;
+}
 
+.custom-carousel-item img {
+	width: 100%;
+	height: auto;
+	max-height: 300px;
+	object-fit: contain; /* Asegura que la imagen se ajuste dentro del contenedor manteniendo su proporción */
+	transition: transform 0.3s ease, box-shadow 0.3s ease;
+	border-radius: 10px;
+	background-color: #28d1e760;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
 
+.custom-carousel-item img:hover {
+	transform: scale(1.05);
+	box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+	background-color: #28d1e7;
+}
 
+@media (max-width: 768px) {
+	.slider-title {
+		font-size: 32px;
+	}
+	.custom-carousel-item img {
+		max-height: 250px;
+	}
+}
+
+@media (max-width: 464px) {
+	.slider-title {
+		font-size: 28px;
+	}
+	.custom-carousel-item img {
+		max-height: 200px;
+	}
+}

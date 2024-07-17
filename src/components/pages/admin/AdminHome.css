@@ -1,0 +1,93 @@
+.admin-welcome {
+	font-size: 0.9em;
+	color: purple;
+	margin: 20px 0;
+	margin-bottom: 40px;
+	margin-top: 40px;
+	transition: font-size 0.3s ease;
+	font-weight: bolder;
+	text-align: center;
+	text-shadow: 0 1px 3px rgba(21, 168, 187, 0.719);
+	text-decoration: underline;
+}
+
+.admin-actions {
+	display: flex;
+	justify-content: center;
+	gap: 20px;
+	margin-bottom: 40px;
+}
+
+.admin-button {
+	background-color: #00c8ff;
+	color: #000000;
+	padding: 15px 30px;
+	text-decoration: none;
+	border-radius: 15px;
+	font-size: 18px;
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	transition: background-color 0.3s;
+}
+
+.admin-button:hover {
+	background-color: #0289aa;
+	color: rgb(255, 255, 255);
+}
+
+.admin-stats {
+	background-color: rgba(0, 0, 0, 0.5);
+	padding: 20px;
+	border-radius: 15px;
+	max-width: 70%;
+	max-height: 80%;
+	margin: 0 auto;
+	text-align: center;
+	margin-bottom: 40px;
+}
+
+.admin-stats h2 {
+	color: #009eed;
+	margin-bottom: 20px;
+}
+
+.chart-container {
+	width: 100%;
+	max-width: 600px;
+	margin: 0 auto;
+}
+
+@media (min-width: 1200px) {
+	.admin-stats {
+		max-width: 1000px !important;
+	}
+}
+
+@media (max-width: 768px) {
+	.admin-button {
+		font-size: 16px;
+		padding: 12px 25px;
+	}
+
+	.admin-stats {
+		width: 90%;
+	}
+
+	.chart-container {
+		max-width: 100%;
+	}
+}
+
+@media (max-width: 576px) {
+	.admin-welcome {
+		font-size: 0.65rem;
+	}
+	.admin-button {
+		font-size: 18px;
+		padding: 10px 20px;
+	}
+	.admin-stats {
+		max-width: 600px !important;
+	}
+}

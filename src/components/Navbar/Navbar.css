@@ -1,7 +1,3 @@
-.font-celeste-crud {
-	color: #000000;
-	font-weight: bold;
-}
 .colorfuente {
 	color: #218b99;
 }
@@ -36,7 +32,7 @@
 }
 
 .navbar {
-	background-color: #237ab4 !important;
+	background-color: #14a9d6 !important;
 	padding: 8px 0 !important;
 }
 
@@ -74,42 +70,6 @@
 	border-color: #218b99;
 }
 
-.btn-celeste-crud {
-	min-width: 100px;
-	height: 60px;
-	line-height: 50px;
-	color: #fff;
-	padding: 5px 10px;
-	font-weight: bold;
-	cursor: pointer;
-	transition: all 0.3s ease;
-	position: relative;
-	display: inline-block;
-	outline: none;
-	border-radius: 5px;
-	z-index: 0;
-	background: #fff;
-	overflow: hidden;
-	border: 2px solid #218b99;
-	color: #218b99;
-}
-.btn-celeste-crud:hover {
-	color: #fff;
-}
-.btn-celeste-crud:hover:after {
-	width: 100%;
-}
-.btn-celeste-crud:after {
-	content: '';
-	position: absolute;
-	z-index: -1;
-	transition: all 0.3s ease;
-	left: 0;
-	top: 0;
-	width: 0;
-	height: 100%;
-	background: #218b99;
-}
 .btn-celeste-serv {
 	min-width: 50px;
 	height: 40px;

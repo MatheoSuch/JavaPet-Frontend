@@ -1,4 +1,10 @@
-/* Estilos para el formulario de registro */
+.tituloRegistro {
+	color: #000000;
+	font-weight: bold;
+	font-size: 3.5rem; /* Aumenta el tamaño de la fuente */
+	text-align: center; /* Centra el texto */
+	text-shadow: 2px 2px 4px rgba(92, 207, 252, 0.774); /* Añade sombra al texto */
+}
 
 /* Estilos generales */
 .form-group {
@@ -35,15 +41,43 @@
 
 /* Estilos para botón */
 .btn-primary {
-	background-color: #218b99;
-	border-color: #000000;
+	min-width: 100px;
+	height: 46px;
+	line-height: 36px;
+	color: #fff;
 	font-weight: bold;
-	transition: background-color 0.3s ease;
+	cursor: pointer;
+	transition: all 0.3s ease;
+	position: relative;
+	display: inline-block;
+	outline: none;
+	border-radius: 5px;
+	z-index: 0;
+	background: #fff;
+	overflow: hidden;
+	border: 2px solid #1191b1;
+	color: #000000;
 }
 
 .btn-primary:hover {
-	background-color: #07c1da;
+	color: #fff;
 	border-color: #000000;
+}
+
+.btn-primary:hover::after {
+	width: 100%;
+}
+
+.btn-primary:after {
+	content: '';
+	position: absolute;
+	z-index: -1;
+	transition: all 0.3s ease;
+	left: 0;
+	top: 0;
+	width: 0;
+	height: 100%;
+	background: #23b2c5;
 }
 
 .btn-primary:focus {
@@ -51,13 +85,56 @@
 }
 
 .registro-form-container {
-	background-color: rgba(45, 153, 185, 0.685); /* Color de fondo con opacidad */
+	background-color: rgba(121, 195, 224, 0.753); /* Color de fondo con opacidad */
 	padding: 10px;
 	border-radius: 30px;
-	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */ /* Sombra opcional para resaltar */
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	height: 100%;
 }
 
 .registro-image-container {
-	margin-top: 20px; /* Ejemplo de margen superior */
-	padding: 10px; /* Ejemplo de relleno */
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100%;
+}
+
+.registro-image {
+	width: 100%;
+	height: 734px;
+	object-fit: cover;
+	border-radius: 30px;
+}
+
+@media (max-width: 991px) {
+	.registro-form-container,
+	.registro-image-container {
+		height: auto;
+	}
+
+	.registro-form-container,
+	.registro-image-container {
+		border-radius: 30px;
+	}
+
+	.registro-image {
+		border-radius: 30px;
+		width: 90%;
+		height: 90%;
+	}
+}
+
+.password-container {
+	position: relative;
+}
+
+.password-icon {
+	position: absolute;
+	right: 10px;
+	top: 50%;
+	transform: translateY(-50%);
+	cursor: pointer;
 }

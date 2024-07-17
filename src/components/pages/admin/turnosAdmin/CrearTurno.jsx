@@ -10,7 +10,6 @@ import './turnoCSS/CrearTurno.css';
 
 export const CrearTurno = ({ onTurnoCreado }) => {
 	const [show, setShow] = useState(false);
-	const [isLoading, setIsLoading] = useState(false);
 	const [formData, setFormData] = useState({
 		detalleCita: '',
 		veterinario: '',
@@ -37,7 +36,6 @@ export const CrearTurno = ({ onTurnoCreado }) => {
 		const { detalleCita, veterinario, mascota, especie, raza, fecha, hora } =
 			formData;
 
-		// Validaciones de campos
 		if (
 			!detalleCita ||
 			!veterinario ||
@@ -54,11 +52,11 @@ export const CrearTurno = ({ onTurnoCreado }) => {
 			});
 		}
 
-		if (detalleCita.length < 10 || detalleCita.length > 200) {
+		if (detalleCita.length < 10 || detalleCita.length > 40) {
 			return Swal.fire({
 				icon: 'error',
 				title: 'Oops...',
-				text: 'El detalle de la cita debe tener entre 10 y 200 caracteres',
+				text: 'El detalle de la cita debe tener entre 10 y 40 caracteres',
 			});
 		}
 
@@ -95,7 +93,16 @@ export const CrearTurno = ({ onTurnoCreado }) => {
 			});
 		}
 
-		setIsLoading(true); // Activar indicador de carga antes de enviar la solicitud
+		const nuevoTurno = {
+			_id: Math.random().toString(36).substr(2, 9), // Generar un ID temporal
+			detalleCita,
+			veterinario,
+			mascota,
+			especie,
+			raza,
+			fecha: fecha.toISOString().split('T')[0], // Usar la fecha normalizada
+			hora,
+		};
 
 		try {
 			const resp = await guardarTurnoDB(
@@ -114,6 +121,7 @@ export const CrearTurno = ({ onTurnoCreado }) => {
 					title: '¡Turno creado!',
 					text: 'El turno se ha creado correctamente.',
 				});
+				// Actualizar el turno con el ID correcto de la base de datos
 				onTurnoCreado(resp.data);
 				setFormData({
 					detalleCita: '',
@@ -128,6 +136,7 @@ export const CrearTurno = ({ onTurnoCreado }) => {
 			} else {
 				throw new Error('Error al crear turno');
 			}
+			onTurnoCreado(nuevoTurno);
 		} catch (error) {
 			console.error('Error al guardar el turno:', error);
 			Swal.fire({
@@ -135,8 +144,6 @@ export const CrearTurno = ({ onTurnoCreado }) => {
 				title: 'Oops...',
 				text: 'No se pudo crear el turno. Inténtalo de nuevo más tarde.',
 			});
-		} finally {
-			setIsLoading(false); // Desactivar indicador de carga después de manejar la solicitud
 		}
 	};
 
@@ -189,11 +196,11 @@ export const CrearTurno = ({ onTurnoCreado }) => {
 					onClick={handleShow}
 					className="mx-5 mx-md-auto nuevo-turno-button"
 				>
-					Nuevo Usuario
+					Nuevo Turno
 				</Button>
 			</div>
 
-			<Modal show={show} onHide={handleClose}>
+			<Modal show={show} onHide={handleClose} className="modal-crear-turno">
 				<Modal.Header closeButton>
 					<Modal.Title>Crear Turno</Modal.Title>
 				</Modal.Header>
@@ -206,12 +213,16 @@ export const CrearTurno = ({ onTurnoCreado }) => {
 								name="detalleCita"
 								value={formData.detalleCita}
 								onChange={handleInputChange}
+								required
+								minLength="10"
+								maxLength="40"
 							/>
 						</Form.Group>
 						<Form.Group className="mb-3">
 							<Form.Label>Veterinario</Form.Label>
 							<Form.Control
 								as="select"
+								required
 								name="veterinario"
 								onChange={handleInputChange}
 								value={formData.veterinario || ''}
@@ -230,6 +241,9 @@ export const CrearTurno = ({ onTurnoCreado }) => {
 								name="mascota"
 								value={formData.mascota}
 								onChange={handleInputChange}
+								required
+								minLength="2"
+								maxLength="30"
 							/>
 						</Form.Group>
 						<Form.Group className="mb-3">
@@ -239,6 +253,9 @@ export const CrearTurno = ({ onTurnoCreado }) => {
 								name="especie"
 								value={formData.especie}
 								onChange={handleInputChange}
+								required
+								minLength="2"
+								maxLength="30"
 							/>
 						</Form.Group>
 						<Form.Group className="mb-3">
@@ -248,6 +265,9 @@ export const CrearTurno = ({ onTurnoCreado }) => {
 								name="raza"
 								value={formData.raza}
 								onChange={handleInputChange}
+								required
+								minLength="2"
+								maxLength="30"
 							/>
 						</Form.Group>
 						<Form.Group className="mb-3">
@@ -257,6 +277,7 @@ export const CrearTurno = ({ onTurnoCreado }) => {
 								onChange={(date) => setFormData({ ...formData, fecha: date })}
 								dateFormat="yyyy-MM-dd"
 								className="form-control"
+								required
 							/>
 						</Form.Group>
 						<Form.Group className="mb-3">
@@ -264,6 +285,7 @@ export const CrearTurno = ({ onTurnoCreado }) => {
 							<Form.Control
 								as="select"
 								name="hora"
+								required
 								onChange={handleInputChange}
 								value={formData.hora || ''}
 							>
@@ -281,18 +303,14 @@ export const CrearTurno = ({ onTurnoCreado }) => {
 								<option value="16:00">16:00</option>
 							</Form.Control>
 						</Form.Group>
-
-						<Button variant="secondary" onClick={handleClose}>
-							Cerrar
-						</Button>
-						<Button
-							className="mx-3"
-							variant="primary"
-							type="submit"
-							disabled={isLoading}
-						>
-							{isLoading ? 'Guardando...' : 'Guardar cambios'}
-						</Button>
+						<div className="d-flex justify-content-end">
+							<Button variant="secondary" onClick={handleClose}>
+								Cerrar
+							</Button>
+							<Button className="mx-3" variant="primary" type="submit">
+								Guardar cambios
+							</Button>
+						</div>
 					</Form>
 				</Modal.Body>
 			</Modal>

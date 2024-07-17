@@ -11,14 +11,14 @@ const Publicidad = () => {
 	const images = [imagen1, imagen2, imagen3, imagen4, imagen5, imagen6];
 
 	return (
-		<div className="publicidad-container" style={{ marginTop: '100px' }}>
-			<h2 className="publicidad-title">Marcas con las que trabajamos </h2>
+		<div className="publicidad-container">
+			<h2 className="publicidad-title">Marcas con las que trabajamos</h2>
 			<div className="container mt-5">
 				<div className="row d-flex justify-content-center align-items-center">
 					{images.map((image, index) => (
 						<div
 							key={index}
-							className="col-4 col-md-3 d-flex justify-content-center align-items-center mb-4"
+							className="col-6 col-md-4 col-lg-3 d-flex justify-content-center align-items-center mb-4 publicidad-item"
 						>
 							<img
 								src={image}

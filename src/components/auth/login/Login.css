@@ -1,14 +1,144 @@
+/* General styles */
 .register-question {
 	color: #000;
+	font-size: 1rem; /* Base size */
 }
 
 .register-link {
-	color: #007bff;
+	color: #77dcf5;
 	text-decoration: none;
 	font-weight: bold;
+	font-size: 1rem; /* Base size */
 }
 
 .register-link:hover {
-	color: #0056b3;
+	color: #00aeff;
 	text-decoration: underline;
+}
+
+.tituloLogin {
+	color: #000000;
+	font-weight: bold;
+	font-size: 2.5rem; /* Base size */
+	text-shadow: 2px 2px 4px rgba(92, 207, 252, 0.774); /* Add shadow to text */
+}
+
+.btn-celeste-crud {
+	min-width: 100px;
+	height: 50px;
+	line-height: 40px;
+	color: #fff;
+	padding: 5px 10px;
+	font-weight: bold;
+	cursor: pointer;
+	transition: all 0.3s ease;
+	position: relative;
+	display: inline-block;
+	outline: none;
+	border-radius: 5px;
+	z-index: 0;
+	background: #fff;
+	overflow: hidden;
+	border: 2px solid #218b99;
+	color: #218b99;
+}
+
+.btn-celeste-crud:hover {
+	color: #fff;
+}
+
+.btn-celeste-crud:hover:after {
+	width: 100%;
+}
+
+.btn-celeste-crud:after {
+	content: '';
+	position: absolute;
+	z-index: -1;
+	transition: all 0.3s ease;
+	left: 0;
+	top: 0;
+	width: 0;
+	height: 100%;
+	background: #218b99;
+}
+
+.font-celeste-crud {
+	color: #000000 !important;
+	font-weight: bold;
+	font-size: 1.2rem; /* Base size */
+	text-shadow: 2px 2px 4px rgba(92, 207, 252, 0.774);
+}
+
+.input-bg {
+	background-color: #f5f5f5; /* Change input background color */
+	border: 1px solid #ddd; /* Add border */
+}
+
+.input-container {
+	position: relative;
+	margin-bottom: 1.5rem; /* Add margin bottom to create space for error message */
+}
+
+.error-message {
+	color: rgb(221, 1, 38);
+	font-size: 0.9rem;
+	position: absolute;
+	bottom: -1.5rem; /* Position error message below input */
+	left: 0;
+	white-space: nowrap;
+}
+
+.password-input {
+	position: relative;
+}
+
+.password-toggle-icon {
+	position: absolute;
+	right: 10px;
+	top: 50%;
+	transform: translateY(-50%);
+	cursor: pointer;
+}
+
+.loginImg {
+	width: 100%; /* Makes image responsive */
+	max-width: 500px; /* Maximum size for the image */
+	height: auto; /* Maintains aspect ratio */
+}
+
+/* Media queries for responsiveness */
+@media (max-width: 768px) {
+	.tituloLogin {
+		font-size: 2rem; /* Smaller size for smaller screens */
+	}
+	.font-celeste-crud,
+	.register-question,
+	.register-link {
+		font-size: 1rem; /* Adjust size for mobile devices */
+	}
+	.btn-celeste-crud {
+		height: 45px; /* Adjust button height */
+		line-height: 35px; /* Adjust button line height */
+	}
+}
+
+@media (max-width: 576px) {
+	.tituloLogin {
+		font-size: 1.8rem; /* Smaller size for smaller screens */
+	}
+	.font-celeste-crud,
+	.register-question,
+	.register-link {
+		font-size: 0.9rem; /* Adjust size for smaller devices */
+	}
+	.btn-celeste-crud {
+		height: 40px; /* Adjust button height */
+		line-height: 30px; /* Adjust button line height */
+	}
+	.error-message {
+		position: static; /* Change position to static for very small screens */
+		transform: none;
+		margin-top: 5px;
+	}
 }

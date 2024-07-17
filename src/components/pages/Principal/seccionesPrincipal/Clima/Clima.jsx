@@ -30,7 +30,7 @@ const Weather = () => {
 
 	return (
 		<div className="weather-container">
-			<h2>Temperatura Actual</h2>
+			<h2 className="tituloClima">Clima Actual</h2>
 			<div className="weather-content">
 				<div className="weather-info">
 					<p>

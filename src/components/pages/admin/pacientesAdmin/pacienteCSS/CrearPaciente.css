@@ -1,76 +1,70 @@
-/* CrearUsuario.css */
-
 .nuevo-usuario-button {
-	background-color: #237ab4 !important; /* Color de fondo del botón */
-	border-color: #000000 !important; /* Color del borde del botón */
-	color: #ffffff; /* Color del texto */
-	border-radius: 5px; /* Borde redondeado */
-	padding: 10px 20px; /* Espaciado interno */
-	font-size: 1rem; /* Tamaño de fuente */
-	transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease; /* Transición suave */
+	background-color: #5cbbfb !important;
+	border-color: #000000 !important;
+	border-radius: 5px;
+	font-size: 1rem;
+	transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
 }
 
 .nuevo-usuario-button:hover {
-	background-color: #3255c9 !important; /* Color de fondo al pasar el mouse */
-	border-color: #000000 !important; /* Color del borde al pasar el mouse */
-	color: #f0f0f0 !important; /* Color del texto al pasar el mouse */
+	color: #f0f0f0 !important;
 }
 
 .modal-crear-usuario {
 	.modal-content {
-		background-color: #ffffff; /* Color de fondo del modal */
-		border-radius: 15px; /* Borde redondeado */
-		box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra */
+		background-color: #ffffff;
+		border-radius: 15px;
+		box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 	}
 
 	.modal-header {
-		background-color: #237ab4; /* Color de fondo del encabezado */
-		color: #ffffff; /* Color del texto del encabezado */
-		border-bottom: none; /* Sin borde inferior */
-		border-radius: 15px 15px 0 0; /* Borde redondeado solo arriba */
+		background-color: #237ab4;
+		color: #ffffff;
+		border-bottom: none;
+		border-radius: 15px 15px 0 0;
 	}
 
 	.modal-title {
-		font-size: 1.5rem; /* Tamaño de fuente del título */
+		font-size: 1.5rem;
 	}
 
 	.modal-body {
-		padding: 20px; /* Espaciado interno del cuerpo */
+		padding: 20px;
 	}
 
 	.modal-footer {
-		border-top: none; /* Sin borde superior en el pie de página */
-		padding: 15px 20px; /* Espaciado interno del pie de página */
-		justify-content: flex-end; /* Alinea los botones al final */
+		border-top: none;
+		padding: 15px 20px;
+		justify-content: flex-end;
 	}
 
 	.form-control {
-		border: 1px solid #ced4da; /* Borde de los campos de entrada */
-		border-radius: 5px; /* Borde redondeado */
+		border: 1px solid #ced4da;
+		border-radius: 5px;
 	}
 
 	.form-control:focus {
-		border-color: #000000; /* Color del borde al enfocar */
-		box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25); /* Sombra al enfocar */
+		border-color: #000000;
+		box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
 	}
 
 	.btn-primary {
-		background-color: #237ab4; /* Color de fondo del botón primario */
-		border-color: #000000; /* Color del borde del botón primario */
+		background-color: #237ab4;
+		border-color: #000000;
 	}
 
 	.btn-primary:hover {
-		background-color: #0b2d9c; /* Color de fondo al pasar el mouse */
-		border-color: #000000; /* Color del borde al pasar el mouse */
+		background-color: #0b2d9c;
+		border-color: #000000;
 	}
 
 	.btn-secondary {
-		background-color: #800404; /* Color de fondo del botón secundario */
-		border-color: #000000; /* Color del borde del botón secundario */
+		background-color: #800404;
+		border-color: #000000;
 	}
 
 	.btn-secondary:hover {
-		background-color: #ff0000; /* Color de fondo al pasar el mouse */
-		border-color: #000000; /* Color del borde al pasar el mouse */
+		background-color: #ff0000;
+		border-color: #000000;
 	}
 }

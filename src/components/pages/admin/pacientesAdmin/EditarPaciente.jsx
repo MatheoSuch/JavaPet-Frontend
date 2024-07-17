@@ -175,6 +175,9 @@ export const EditarPaciente = ({
 							type="text"
 							value={pacienteEditSelecc.nombre}
 							onChange={(e) => handleChangeEditar('nombre', e.target.value)}
+							required
+							minLength="2"
+							maxLength="30"
 						/>
 					</Form.Group>
 					<Form.Group className="mb-3">
@@ -183,6 +186,9 @@ export const EditarPaciente = ({
 							type="text"
 							value={pacienteEditSelecc.apellido}
 							onChange={(e) => handleChangeEditar('apellido', e.target.value)}
+							required
+							minLength="2"
+							maxLength="30"
 						/>
 					</Form.Group>
 					<Form.Group className="mb-3">
@@ -191,14 +197,21 @@ export const EditarPaciente = ({
 							type="email"
 							value={pacienteEditSelecc.email}
 							onChange={(e) => handleChangeEditar('email', e.target.value)}
+							required
+							pattern="[^\s@]+@[^\s@]+\.[^\s@]+"
+							minLength="10"
+							maxLength="30"
 						/>
 					</Form.Group>
 					<Form.Group className="mb-3">
 						<Form.Label>Teléfono</Form.Label>
 						<Form.Control
-							type="text"
+							type="tel"
 							value={pacienteEditSelecc.telefono}
 							onChange={(e) => handleChangeEditar('telefono', e.target.value)}
+							required
+							minLength="10"
+							maxLength="10"
 						/>
 					</Form.Group>
 					<Form.Group className="mb-3">
@@ -207,24 +220,27 @@ export const EditarPaciente = ({
 							as="select"
 							value={pacienteEditSelecc.rol}
 							onChange={(e) => handleChangeEditar('rol', e.target.value)}
+							required
 						>
 							<option value="" disabled>
 								Seleccionar rol
 							</option>
-							<option value="admin">Admin</option>
-							<option value="usuario">Usuario</option>
+							<option value="admin">admin</option>
+							<option value="usuario">usuario</option>
 						</Form.Control>
 					</Form.Group>
+					<ModalFooter>
+						<div className="d-flex justify-content-end">
+							<Button variant="secondary" onClick={handleClose} className="me-2">
+								Cerrar
+							</Button>
+							<Button variant="primary" type="submit">
+								Guardar Usuario
+							</Button>
+						</div>
+					</ModalFooter>
 				</Form>
 			</Modal.Body>
-			<ModalFooter>
-				<Button variant="secondary" onClick={handleClose}>
-					Cerrar
-				</Button>
-				<Button className="mx-3" variant="primary" type="submit">
-					Guardar cambios
-				</Button>
-			</ModalFooter>
 		</Modal>
 	);
 };

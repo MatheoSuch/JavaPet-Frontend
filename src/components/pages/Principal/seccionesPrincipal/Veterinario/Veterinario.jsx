@@ -6,25 +6,37 @@ import veterinario3 from '../../../../../assets/veterinario3.png';
 
 export const Veterinario = () => {
 	return (
-		<div className="veterinario-container d-flex flex-column justify-content-center align-items-center">
+		<div className="d-flex flex-column justify-content-center align-items-center">
 			<h2 className="veterinario-title">Nuestros Profesionales</h2>
 			<div className="row">
 				<div className="col-12 col-lg-4 d-flex flex-column justify-content-center align-items-center img-container">
 					<img src={veterinario1} alt="Alejo" />
 					<h2>Alejo Sanchez</h2>
-					<p>"Traumatologo Veterinario"</p>
+					<p>Traumatología Veterinaria</p>
+					<p>
+						Experiencia: 10 años trabajando en disciplina de la Traumatología,
+						especializado en cirugía ortopédica.
+					</p>
 				</div>
 
 				<div className="col-12 col-lg-4 d-flex flex-column justify-content-center align-items-center img-container">
 					<img src={veterinario2} alt="Camila" />
 					<h2>Camila Rodriguez</h2>
-					<p>"Peluquera Canina"</p>
+					<p>Peluquería Canina y Felina </p>
+					<p>
+						Experiencia: 8 años en el cuidado y estilismo de mascotas, certificada en
+						varias técnicas de grooming.
+					</p>
 				</div>
 
 				<div className="col-12 col-lg-4 d-flex flex-column justify-content-center align-items-center img-container">
 					<img src={veterinario3} alt="Melissa" />
 					<h2>Melissa Lopez</h2>
-					<p>"Clínica Veterinaria"</p>
+					<p>Clínica Veterinaria</p>
+					<p>
+						Experiencia: 12 años, con un enfoque en medicina preventiva y tratamiento
+						de enfermedades en mascotas.
+					</p>
 				</div>
 			</div>
 		</div>

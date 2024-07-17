@@ -1,8 +1,55 @@
 .services-title {
-    font-family: 'Poppins', sans-serif;
-    font-size: 48px;
-    font-weight: 600;
-    text-align: center;
-    margin-bottom: 20px;
-    color: purple; /* O puedes usar #800080 para un morado específico */
-  }
+	font-family: 'Poppins', sans-serif;
+	font-weight: bold;
+	font-size: 2.9em;
+	color: purple;
+	margin: 20px 0;
+	transition: font-size 0.3s ease;
+	text-align: center;
+	text-shadow: 0 1px 3px rgba(21, 168, 187, 0.719);
+	text-decoration: underline;
+}
+
+.lazyload {
+	border-radius: 15px;
+}
+
+.service-card {
+	background-color: #14a9d6ab;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+	transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.service-card:hover {
+	background-color: #28d1e7;
+	transform: translateY(-10px);
+	box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.service-title {
+	font-family: 'Poppins', sans-serif;
+	font-size: 26px !important;
+	font-weight: bold !important;
+	color: #800080;
+	text-align: center;
+}
+
+.service-description {
+	font-family: 'Roboto', sans-serif;
+	font-size: 16px;
+	color: #000000;
+	text-align: center;
+	font-weight: 500;
+}
+
+@media (max-width: 768px) {
+	.services-title {
+		font-size: 32px;
+	}
+	.service-title {
+		font-size: 20px;
+	}
+	.service-description {
+		font-size: 14px;
+	}
+}

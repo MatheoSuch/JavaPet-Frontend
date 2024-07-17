@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Swal from 'sweetalert2';
-import Button from 'react-bootstrap/esm/Button';
+import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import Form from 'react-bootstrap/Form';
 import javaPetApi from '../../../../api/javaPetApi';
@@ -72,15 +72,15 @@ export const CrearUsuario = ({ onUsuarioCreated }) => {
 			});
 		}
 
-		if (password.length < 6) {
+		if (password.length < 5) {
 			return Swal.fire({
 				icon: 'error',
 				title: 'Oops...',
-				text: 'La contraseña debe tener al menos 6 caracteres',
+				text: 'La contraseña debe tener al menos 5 caracteres',
 			});
 		}
 
-		const rolesDefinidos = ['usuario', 'administrador'];
+		const rolesDefinidos = ['usuario', 'admin'];
 		if (!rolesDefinidos.includes(rol)) {
 			return Swal.fire({
 				icon: 'error',
@@ -181,70 +181,86 @@ export const CrearUsuario = ({ onUsuarioCreated }) => {
 				</Modal.Header>
 				<Modal.Body>
 					<Form onSubmit={handleSubmit}>
-						<Form.Group className="mb-3">
+						<Form.Group className="mb-3" controlId="formNombre">
 							<Form.Label>Nombre</Form.Label>
 							<Form.Control
 								type="text"
 								name="nombre"
 								value={formData.nombre}
 								onChange={handleInputChange}
+								placeholder="Ingrese el nombre"
 								required
+								minLength="2"
+								maxLength="30"
 							/>
 						</Form.Group>
-						<Form.Group className="mb-3">
+						<Form.Group className="mb-3" controlId="formApellido">
 							<Form.Label>Apellido</Form.Label>
 							<Form.Control
 								type="text"
 								name="apellido"
 								value={formData.apellido}
 								onChange={handleInputChange}
+								placeholder="Ingrese el apellido"
 								required
+								minLength="2"
+								maxLength="30"
 							/>
 						</Form.Group>
-						<Form.Group className="mb-3">
+						<Form.Group className="mb-3" controlId="formEmail">
 							<Form.Label>Email</Form.Label>
 							<Form.Control
 								type="email"
 								name="email"
 								value={formData.email}
 								onChange={handleInputChange}
+								placeholder="Ingrese el email"
 								required
+								pattern="[^\s@]+@[^\s@]+\.[^\s@]+"
+								minLength="10"
+								maxLength="30"
 							/>
 						</Form.Group>
-						<Form.Group className="mb-3">
+						<Form.Group className="mb-3" controlId="formTelefono">
 							<Form.Label>Teléfono</Form.Label>
 							<Form.Control
-								type="text"
+								type="tel"
 								name="telefono"
 								value={formData.telefono}
 								onChange={handleInputChange}
+								placeholder="Ingrese el teléfono"
 								required
+								minLength="10"
+								maxLength="10"
 							/>
 						</Form.Group>
-						<Form.Group className="mb-3">
+						<Form.Group className="mb-3" controlId="formPassword">
 							<Form.Label>Contraseña</Form.Label>
 							<Form.Control
 								type="password"
 								name="password"
 								value={formData.password}
 								onChange={handleInputChange}
+								placeholder="Ingrese la contraseña"
 								required
+								minLength="5"
+								maxLength="20"
 							/>
 						</Form.Group>
-						<Form.Group className="mb-3">
+						<Form.Group className="mb-3" controlId="formRol">
 							<Form.Label>Rol</Form.Label>
 							<Form.Control
 								as="select"
 								name="rol"
+								value={formData.rol}
 								onChange={handleInputChange}
-								value={formData.rol || ''}
 								required
 							>
 								<option value="" disabled>
 									Seleccionar rol
 								</option>
 								<option value="usuario">Usuario</option>
-								<option value="administrador">Administrador</option>
+								<option value="admin">Admin</option>
 							</Form.Control>
 						</Form.Group>
 

@@ -1,42 +1,108 @@
 .veterinario-title {
 	font-family: 'Poppins', sans-serif;
-	font-size: 48px;
-	font-weight: 600;
+	font-weight: bold;
+	font-size: 2.5em;
+	color: purple;
+	margin: 20px 0;
+	transition: font-size 0.3s ease;
 	text-align: center;
-	margin-bottom: 20px;
-	color: purple; /* O puedes usar #800080 para un morado específico */
+	text-shadow: 0 1px 3px rgba(21, 168, 187, 0.719);
+	text-decoration: underline;
 }
-.veterinario-container {
+
+.row {
+	width: 100%;
+	max-width: 1200px; /* Ancho máximo para la fila */
 	display: flex;
-	justify-content: center;
-	align-items: center;
-	overflow-x: hidden; /* Esto evitará el desplazamiento horizontal */
-	.img-container {
-		padding: 12px;
-		margin: 0;
-		max-width: 100%; /* Establece el ancho máximo al 100% del contenedor */
+	justify-content: space-around;
+	flex-wrap: wrap;
+}
+
+.img-container {
+	padding: 15px !important;
+	margin: 10px !important;
+	width: calc(33.333% - 40px); /* Ancho de cada contenedor con espacio entre ellos */
+	background-color: rgba(126, 215, 235, 0.574); /* Fondo blanco suave */
+	border-radius: 10px;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+	transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.img-container:hover {
+	transform: scale(1.05);
+	box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.img-container img {
+	width: 100%;
+	height: auto;
+	border-radius: 10% !important;
+	object-fit: cover;
+	transition: transform 0.3s ease-in-out;
+}
+
+.img-container img:hover {
+	transform: scale(1.05);
+}
+
+.img-container h2 {
+	font-family: 'Poppins', sans-serif;
+	font-size: 1.5em;
+	color: #000000;
+	text-align: center;
+	font-weight: 500;
+	margin-top: 10px;
+}
+
+.img-container p {
+	font-family: 'Poppins', sans-serif;
+	font-size: 1em;
+	color: #0b0b0b;
+	margin-top: 5px;
+	text-align: center;
+}
+
+@media (max-width: 768px) {
+	.veterinario-title {
+		font-size: 36px;
 	}
+
 	.img-container {
-		padding: 12px;
-		margin: 0;
-		max-width: 100%; /* Establece el ancho máximo al 100% del contenedor */
+		padding: 15px;
+		margin: 10px;
 	}
 
 	.img-container img {
-		max-width: 100%; /* Establece el ancho máximo al 100% del contenedor */
-		height: auto; /* Permite que la altura se ajuste automáticamente para mantener la proporción */
-		width: 300px;
-		height: 200px;
-		border-radius: 10%;
+		width: 100%;
+		height: auto;
 	}
 
-	@media (max-width: 600px) {
-		.img-container p {
-			padding-left: 15px;
-		}
-		.img-container img {
-			width: 200px; /* Establece el ancho deseado */
-			height: 150px; /* Establece la altura deseada */
-		}
+	.img-container h2 {
+		text-align: center;
+		font-size: 1.1rem;
+	}
+
+	.img-container p {
+		font-size: 0.9rem;
+	}
+}
+
+@media (max-width: 576px) {
+	.veterinario-title {
+		font-size: 28px;
+	}
+
+	.img-container img {
+		width: 100%;
+		height: auto;
+	}
+
+	.img-container h2 {
+		font-size: 0.9rem;
+		text-align: center;
+	}
+
+	.img-container p {
+		font-size: 0.8rem;
 	}
 }
