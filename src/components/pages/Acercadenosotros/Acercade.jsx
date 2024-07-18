@@ -24,7 +24,7 @@ const AcercaDe = () => {
       <section className="container mt-3 text-white text-center col-md-5 border rounded bg-dark">
         <h3 className="mt-3 mb-3 text-justify">
           Especialistas en codear, investigadores de los lugares más
-          recónditos de Google, estos somos
+          recónditos de Google, estos somos:
         </h3>
       </section>
       </div>
