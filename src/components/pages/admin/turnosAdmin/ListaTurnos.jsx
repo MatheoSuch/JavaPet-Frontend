@@ -10,8 +10,6 @@ import { CrearTurno } from './CrearTurno';
 import { eliminarTurno } from './EliminarTurno';
 import { PencilSquare, Trash, Eye } from 'react-bootstrap-icons'; // Importar iconos
 import './turnoCSS/ListaTurnos.css';
-import NavBar from '../../../Navbar/Navbar';
-import Footer from '../../../Footer/Footer';
 import ModalDetalleTurno from './VerTurno';
 
 export const ListaTurnos = () => {
@@ -55,10 +53,11 @@ export const ListaTurnos = () => {
 	};
 
 	const onUpdateTurno = (turnoActualizado) => {
-		const updatedTurnos = cargarTurnos.map((turno) =>
-			turno._id === turnoActualizado._id ? turnoActualizado : turno
+		setCargarTurnos((prevTurnos) =>
+			prevTurnos.map((turno) =>
+				turno._id === turnoActualizado._id ? turnoActualizado : turno
+			)
 		);
-		setCargarTurnos(updatedTurnos);
 	};
 
 	const handleEliminarClick = async (turnoId) => {
@@ -90,7 +89,6 @@ export const ListaTurnos = () => {
 
 	return (
 		<div>
-			<NavBar />
 			<div className="listaT">
 				<h2 className="text-center highlightTurno">Lista de Turnos</h2>
 				<CrearTurno onTurnoCreado={onTurnoCreado} />
@@ -111,44 +109,57 @@ export const ListaTurnos = () => {
 						</thead>
 						<tbody>
 							{cargarTurnos.map((turno, index) => {
-								return (
-									<tr key={turno._id}>
-										<td data-label="ID">{index + 1}</td>
-										<td data-label="Detalle de la cita">{turno.detalleCita}</td>
-										<td data-label="Veterinario">{turno.veterinario}</td>
-										<td data-label="Mascota">{turno.mascota}</td>
-										<td data-label="Especie">{turno.especie}</td>
-										<td data-label="Raza">{turno.raza}</td>
-										<td data-label="Fecha">
-											{turno.fecha && format(new Date(turno.fecha), 'yyyy-MM-dd')}
-										</td>
-										<td data-label="Hora">
-											{turno.hora && turno.hora.substring(0, 5)}
-										</td>
-										<td data-label="Acciones">
-											<div className="acciones-container">
-												<Button
-													variant="outline-primary"
-													onClick={() => handleEditarClick(turno)}
-												>
-													<PencilSquare />
-												</Button>
-												<Button
-													variant="outline-danger"
-													onClick={() => handleEliminarClick(turno._id)}
-												>
-													<Trash />
-												</Button>
-												<Button
-													variant="outline-info"
-													onClick={() => handleShowDetails(turno)}
-												>
-													<Eye />
-												</Button>
-											</div>
-										</td>
-									</tr>
-								);
+								if (
+									turno &&
+									turno._id &&
+									turno.detalleCita &&
+									turno.veterinario &&
+									turno.mascota &&
+									turno.especie &&
+									turno.raza &&
+									turno.fecha &&
+									turno.hora
+								) {
+									return (
+										<tr key={turno._id}>
+											<td data-label="ID">{index + 1}</td>
+											<td data-label="Detalle de la cita">{turno.detalleCita}</td>
+											<td data-label="Veterinario">{turno.veterinario}</td>
+											<td data-label="Mascota">{turno.mascota}</td>
+											<td data-label="Especie">{turno.especie}</td>
+											<td data-label="Raza">{turno.raza}</td>
+											<td data-label="Fecha">
+												{turno.fecha && format(new Date(turno.fecha), 'yyyy-MM-dd')}
+											</td>
+											<td data-label="Hora">
+												{turno.hora && turno.hora.substring(0, 5)}
+											</td>
+											<td data-label="Acciones">
+												<div className="acciones-container">
+													<Button
+														variant="outline-primary"
+														onClick={() => handleEditarClick(turno)}
+													>
+														<PencilSquare />
+													</Button>
+													<Button
+														variant="outline-danger"
+														onClick={() => handleEliminarClick(turno._id)}
+													>
+														<Trash />
+													</Button>
+													<Button
+														variant="outline-info"
+														onClick={() => handleShowDetails(turno)}
+													>
+														<Eye />
+													</Button>
+												</div>
+											</td>
+										</tr>
+									);
+								}
+								return null;
 							})}
 						</tbody>
 					</Table>
@@ -165,7 +176,6 @@ export const ListaTurnos = () => {
 					handleClose={handleCloseDetails}
 				/>
 			</div>
-			<Footer />
 		</div>
 	);
 };

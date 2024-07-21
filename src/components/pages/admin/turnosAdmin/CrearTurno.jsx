@@ -52,11 +52,11 @@ export const CrearTurno = ({ onTurnoCreado }) => {
 			});
 		}
 
-		if (detalleCita.length < 10 || detalleCita.length > 40) {
+		if (detalleCita.length < 10 || detalleCita.length > 200) {
 			return Swal.fire({
 				icon: 'error',
 				title: 'Oops...',
-				text: 'El detalle de la cita debe tener entre 10 y 40 caracteres',
+				text: 'El detalle de la cita debe tener entre 10 y 200 caracteres',
 			});
 		}
 
@@ -93,16 +93,24 @@ export const CrearTurno = ({ onTurnoCreado }) => {
 			});
 		}
 
-		const nuevoTurno = {
-			_id: Math.random().toString(36).substr(2, 9), // Generar un ID temporal
-			detalleCita,
-			veterinario,
-			mascota,
-			especie,
-			raza,
-			fecha: fecha.toISOString().split('T')[0], // Usar la fecha normalizada
-			hora,
-		};
+		const selectedDate = new Date(fecha);
+		if (selectedDate.getDay() === 0 || selectedDate.getDay() === 6) {
+			// 0 es domingo, 6 es sábado
+			return Swal.fire({
+				icon: 'error',
+				title: 'Oops...',
+				text: 'Los turnos solo se pueden programar de lunes a viernes',
+			});
+		}
+
+		const horaTurno = parseInt(hora.split(':')[0], 10);
+		if (horaTurno < 8 || horaTurno > 16) {
+			return Swal.fire({
+				icon: 'error',
+				title: 'Oops...',
+				text: 'La hora del turno debe estar entre las 8:00 y las 16:00',
+			});
+		}
 
 		try {
 			const resp = await guardarTurnoDB(
@@ -116,27 +124,32 @@ export const CrearTurno = ({ onTurnoCreado }) => {
 			);
 
 			if (resp.status === 201) {
+				// Mostrar el mensaje de éxito
 				Swal.fire({
 					icon: 'success',
 					title: '¡Turno creado!',
 					text: 'El turno se ha creado correctamente.',
+				}).then((result) => {
+					if (result.isConfirmed || result.isDismissed) {
+						// Actualizar el turno con el ID correcto de la base de datos
+						onTurnoCreado(resp.data);
+						// Limpiar el formulario
+						setFormData({
+							detalleCita: '',
+							veterinario: '',
+							mascota: '',
+							especie: '',
+							raza: '',
+							fecha: new Date(),
+							hora: '',
+						});
+						// Cerrar el modal después de crear el turno
+						setShow(false);
+					}
 				});
-				// Actualizar el turno con el ID correcto de la base de datos
-				onTurnoCreado(resp.data);
-				setFormData({
-					detalleCita: '',
-					veterinario: '',
-					mascota: '',
-					especie: '',
-					raza: '',
-					fecha: new Date(),
-					hora: '',
-				});
-				setShow(false);
 			} else {
 				throw new Error('Error al crear turno');
 			}
-			onTurnoCreado(nuevoTurno);
 		} catch (error) {
 			console.error('Error al guardar el turno:', error);
 			Swal.fire({
@@ -176,7 +189,12 @@ export const CrearTurno = ({ onTurnoCreado }) => {
 			);
 
 			console.log('Respuesta del servidor:', resp);
-			return resp; // Devuelve la respuesta para manejarla en handleSubmit
+			if (resp.status === 201) {
+				// Actualizar el turno con el ID correcto de la base de datos
+				onTurnoCreado();
+			}
+
+			return resp;
 		} catch (error) {
 			console.error('Error al guardar el turno:', error);
 			Swal.fire({
@@ -215,7 +233,7 @@ export const CrearTurno = ({ onTurnoCreado }) => {
 								onChange={handleInputChange}
 								required
 								minLength="10"
-								maxLength="40"
+								maxLength="200"
 							/>
 						</Form.Group>
 						<Form.Group className="mb-3">
@@ -277,6 +295,7 @@ export const CrearTurno = ({ onTurnoCreado }) => {
 								onChange={(date) => setFormData({ ...formData, fecha: date })}
 								dateFormat="yyyy-MM-dd"
 								className="form-control"
+								minDate={new Date()}
 								required
 							/>
 						</Form.Group>

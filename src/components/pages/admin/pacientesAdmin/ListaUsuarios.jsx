@@ -8,8 +8,7 @@ import { EditarPaciente } from './EditarPaciente';
 import { CrearUsuario } from './CrearPaciente';
 import { PencilSquare, Trash, Eye } from 'react-bootstrap-icons';
 import './pacienteCSS/ListaUsuarios.css';
-import NavBar from '../../../Navbar/Navbar';
-import Footer from '../../../Footer/Footer';
+
 import ModalDetalleUsuario from './VerPaciente.';
 
 export const ListaUsuarios = () => {
@@ -71,7 +70,6 @@ export const ListaUsuarios = () => {
 
 	return (
 		<div>
-			<NavBar />
 			<div className="lista">
 				<h2 className="text-center highlightUsuario">Lista de Usuarios</h2>
 				<CrearUsuario onUsuarioCreated={handleUsuarioCreated} />
@@ -140,7 +138,6 @@ export const ListaUsuarios = () => {
 					handleClose={handleCloseDetails}
 				/>
 			</div>
-			<Footer />
 		</div>
 	);
 };

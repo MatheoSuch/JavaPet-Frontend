@@ -138,7 +138,6 @@ export const Registro = () => {
 
 	return (
 		<div>
-			<NavBar />
 			<Container className="py-5">
 				<h1 className="tituloRegistro">Registrarse</h1>
 				<hr />
@@ -263,7 +262,6 @@ export const Registro = () => {
 					</Col>
 				</Row>
 			</Container>
-			<Footer />
 		</div>
 	);
 };

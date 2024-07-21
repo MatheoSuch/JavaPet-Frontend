@@ -10,6 +10,18 @@
 	text-decoration: underline;
 }
 
+.not-available-badge {
+	position: absolute; /* Posiciona el badge sobre la tarjeta */
+	top: 10px;
+	right: 10px;
+	background-color: rgba(255, 0, 0, 0.8); /* Fondo rojo semitransparente */
+	color: white;
+	padding: 5px 10px;
+	border-radius: 5px;
+	font-weight: bold;
+	font-size: 1.1em;
+}
+
 .row {
 	width: 100%;
 	max-width: 1200px; /* Ancho máximo para la fila */
@@ -19,6 +31,7 @@
 }
 
 .img-container {
+	position: relative; /* Asegúrate de que el contenedor tenga posición relativa */
 	padding: 15px !important;
 	margin: 10px !important;
 	width: calc(33.333% - 40px); /* Ancho de cada contenedor con espacio entre ellos */
@@ -104,5 +117,10 @@
 
 	.img-container p {
 		font-size: 0.8rem;
+	}
+
+	.not-available-badge {
+		font-size: 1em;
+		padding: 4px 8px;
 	}
 }

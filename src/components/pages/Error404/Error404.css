@@ -1,0 +1,86 @@
+.error-page {
+	display: flex;
+	flex-direction: column;
+	height: 100vh;
+	justify-content: center;
+	align-items: center;
+	position: relative;
+	background: url('../../../assets/perritonuevo.jpg') no-repeat center center fixed;
+	background-size: cover;
+}
+
+.text-container {
+	color: white;
+	text-align: center;
+	z-index: 2;
+	padding: 20px;
+	background-color: rgba(3, 24, 43, 0.6);
+	border-radius: 10px;
+}
+
+.title {
+	font-size: 3rem;
+	margin: 0;
+	color: white;
+}
+
+.subtitle {
+	font-size: 1.5em;
+	margin: 10px 0;
+	color: white;
+}
+
+.button-link {
+	padding: 10px 20px;
+	background-color: #007bff;
+	color: #ffffff;
+	border-radius: 5px;
+	margin-top: 20px;
+	text-decoration: none;
+	display: inline-block;
+}
+
+@media (max-width: 576px) {
+	.title {
+		font-size: 2rem;
+	}
+
+	.subtitle {
+		font-size: 1rem;
+	}
+
+	.button-link {
+		font-size: 14px;
+		padding: 8px 16px;
+	}
+}
+
+@media (max-width: 768px) {
+	.title {
+		font-size: 2.5rem;
+	}
+
+	.subtitle {
+		font-size: 1.25em;
+	}
+
+	.button-link {
+		font-size: 15px;
+		padding: 9px 18px;
+	}
+}
+
+@media (min-width: 992px) {
+	.title {
+		font-size: 3.5rem;
+	}
+
+	.subtitle {
+		font-size: 1.75em;
+	}
+
+	.button-link {
+		font-size: 17px;
+		padding: 11px 22px;
+	}
+}

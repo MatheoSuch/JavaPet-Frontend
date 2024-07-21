@@ -83,7 +83,6 @@ export const Login = () => {
 
 	return (
 		<div>
-			<NavBar />
 			<Container className="py-5">
 				<h1 className="tituloLogin">Iniciar Sesión</h1>
 				<hr />
@@ -157,7 +156,6 @@ export const Login = () => {
 					</Form>
 				</div>
 			</Container>
-			<Footer />
 		</div>
 	);
 };

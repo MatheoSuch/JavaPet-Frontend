@@ -1,0 +1,79 @@
+.acerca-de-container {
+	padding: 80px 0;
+}
+
+.titutloAcer {
+	color: rgb(108, 1, 161);
+	font-weight: 500;
+	font-weight: bold;
+	text-align: center;
+}
+
+.card {
+	border: none;
+	border-radius: 15px;
+	overflow: hidden;
+	transition: transform 0.3s ease;
+	height: 100%;
+	background-color: #cb9af9; /* Color de fondo púrpura claro */
+}
+
+.card:hover {
+	transform: translateY(-5px);
+}
+
+.card-img-container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 180px; /* Altura fija para todas las imágenes */
+}
+
+.card-img-top {
+	width: 180px; /* Ancho fijo para todas las imágenes */
+	height: 180px; /* Altura fija para todas las imágenes */
+	border-radius: 50%;
+	object-fit: cover;
+	border: 3px solid #ffffff50;
+}
+
+.card-body {
+	padding: 20px;
+	height: 100%;
+	background-color: #dbbbfa; /* Color de fondo púrpura claro */
+}
+
+.card-title {
+	margin-bottom: 10px;
+	font-size: 1.2rem;
+	color: #7f00ff !important; /* Color púrpura */
+}
+
+.card-text {
+	margin-bottom: 5px;
+	font-size: 0.9rem;
+	color: black !important;
+	font-weight: 500;
+}
+
+.section-title-underline {
+	width: 70px;
+	height: 3px;
+	background-color: #ffffff;
+	margin: 0 auto 20px auto;
+}
+
+.social-links {
+	margin-top: auto;
+	display: flex;
+	justify-content: center;
+}
+
+.social-links a {
+	font-size: 1.5rem;
+	transition: color 0.3s ease;
+}
+
+.social-links a:hover {
+	color: #000000 !important;
+}

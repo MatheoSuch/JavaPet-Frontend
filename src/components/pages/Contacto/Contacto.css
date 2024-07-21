@@ -1,0 +1,151 @@
+.contact-container {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	min-height: calc(100vh - 100px);
+	padding: 50px 5px;
+	box-sizing: border-box;
+}
+
+.contact-content {
+	width: 45%;
+	padding: 20px;
+	box-sizing: border-box;
+	background-color: #9cccffed;
+	color: #4a4a4a;
+	border-radius: 15px;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.contact-content h1 {
+	font-size: 2.5rem;
+	font-weight: bold;
+	margin-bottom: 20px;
+	color: #200058;
+	text-align: center;
+}
+
+.contact-content h3 {
+	font-size: 1.5rem;
+	margin-bottom: 20px;
+	color: #310093;
+	text-align: center;
+}
+
+#mi-formulario {
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+}
+
+.form-control {
+	border-radius: 5px;
+	padding: 10px;
+	border: 1px solid #ccc;
+	font-size: 1em;
+}
+
+#areaTexto {
+	width: 100%;
+	resize: none;
+	border-radius: 5px;
+	padding: 10px;
+	border: 1px solid #ccc;
+	margin-bottom: 20px;
+}
+
+.boton-enviar {
+	width: 100%;
+	background-color: #6c5ce7;
+	border: none;
+	color: white;
+	padding: 10px;
+	font-size: 1em;
+	cursor: pointer;
+	border-radius: 5px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	transition: background-color 0.3s ease;
+}
+
+.boton-enviar:hover {
+	background-color: #5a4bcf;
+}
+
+.imagen-container {
+	width: auto;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.imagen {
+	width: 73%;
+	border-radius: 10px;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 1024px) {
+	.contact-container {
+		flex-direction: column;
+		align-items: flex-start;
+	}
+
+	.contact-content,
+	.imagen-container {
+		width: 100%;
+	}
+
+	.imagen-container {
+		margin-top: 20px;
+	}
+
+	.imagen {
+		width: 60%;
+	}
+}
+
+@media (max-width: 768px) {
+	.contact-content h1 {
+		font-size: 2rem;
+	}
+
+	.contact-content,
+	.imagen-container {
+		width: 100%;
+	}
+
+	.imagen {
+		width: 50%;
+	}
+
+	.contact-content h3 {
+		font-size: 1.2rem;
+	}
+
+	.boton-enviar {
+		font-size: 0.9em;
+		padding: 8px;
+	}
+}
+
+@media (max-width: 576px) {
+	.imagen {
+		width: 40%;
+	}
+}
+
+.my-button-class {
+	background-color: #6c5ce7;
+	border-color: #6c5ce7;
+	color: white;
+	font-size: 1em;
+	padding: 10px;
+	border-radius: 5px;
+}
+
+.my-button-class:hover {
+	background-color: #5a4bcf;
+	border-color: #5a4bcf;
+}

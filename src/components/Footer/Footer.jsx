@@ -18,26 +18,26 @@ const Footer = () => {
 				<img src={logo} alt="Logo JavaPet" className="footer-logo" />
 			</div>
 			<div className="footer-links">
-				<Link to="*" className="footer-link">
+				<Link to="/error404" className="footer-link">
 					<FontAwesomeIcon icon={faWhatsapp} className="footer-icon" /> 381560312
 				</Link>
-				<Link to="/Contactanos" className="footer-link">
+				<Link to="/error404" className="footer-link">
 					<FontAwesomeIcon icon={faEnvelope} className="footer-icon" />{' '}
 					javapet@gmail.com
 				</Link>
-				<Link to="*" className="footer-link">
+				<Link to="/error404" className="footer-link">
 					<FontAwesomeIcon icon={faMapMarkerAlt} className="footer-icon" /> San
 					Miguel de Tucumán
 				</Link>
-				<Link to="*" className="footer-link">
+				<Link to="/error404" className="footer-link">
 					<FontAwesomeIcon icon={faFacebookSquare} className="footer-icon" />{' '}
 					JavaPetFace
 				</Link>
-				<Link to="*" className="footer-link">
+				<Link to="/error404" className="footer-link">
 					<FontAwesomeIcon icon={faInstagramSquare} className="footer-icon" />{' '}
 					JavaPetOficial
 				</Link>
-				<Link to="*" className="footer-link">
+				<Link to="/error404" className="footer-link">
 					<FontAwesomeIcon icon={faTwitterSquare} className="footer-icon" />{' '}
 					JavaPetTwitter
 				</Link>

@@ -121,6 +121,15 @@ export const EditarTurno = ({ turno, show, handleClose, onUpdateTurno }) => {
 			});
 			return false;
 		}
+		const selectedDate = new Date(fecha);
+		if (selectedDate.getDay() === 0 || selectedDate.getDay() === 6) {
+			Swal.fire({
+				icon: 'error',
+				title: 'Oops...',
+				text: 'Los turnos solo se pueden programar de lunes a viernes',
+			});
+			return false;
+		}
 
 		const horaTurno = parseInt(hora.split(':')[0], 10);
 		if (horaTurno < 8 || horaTurno > 16) {
@@ -146,11 +155,16 @@ export const EditarTurno = ({ turno, show, handleClose, onUpdateTurno }) => {
 					text: 'El turno se ha editado correctamente.',
 				});
 
-				// Actualizar localmente el turno editado en el estado del componente
-				setTurnoEditSelecc({ ...turno });
-
-				// Llamar a la función onUpdateTurno para propagar los cambios al componente padre
-				onUpdateTurno({ ...turno });
+				// Asegúrate de que resp.data.turnoActualizado siempre tenga un _id válido
+				if (resp.data.turnoActualizado && resp.data.turnoActualizado._id) {
+					onUpdateTurno(resp.data.turnoActualizado);
+				} else {
+					console.error(
+						'El objeto turnoActualizado no tiene un _id válido:',
+						resp.data.turnoActualizado
+					);
+					// Manejo del error o notificación adecuada si falta el _id
+				}
 
 				handleClose(); // Cerrar el modal después de editar
 			} else {
@@ -177,6 +191,9 @@ export const EditarTurno = ({ turno, show, handleClose, onUpdateTurno }) => {
 						<Form.Label>Detalle de la cita</Form.Label>
 						<Form.Control
 							type="text"
+							required // Campo requerido
+							minLength={10} // Longitud mínima
+							maxLength={200} // Longitud máxima
 							value={turnoEditSelecc.detalleCita}
 							onChange={(e) => handleChangeEditar('detalleCita', e.target.value)}
 						/>
@@ -188,6 +205,7 @@ export const EditarTurno = ({ turno, show, handleClose, onUpdateTurno }) => {
 						<Form.Label>Veterinario</Form.Label>
 						<Form.Control
 							as="select"
+							required
 							value={turnoEditSelecc.veterinario}
 							onChange={(e) => handleChangeEditar('veterinario', e.target.value)}
 						>
@@ -205,17 +223,25 @@ export const EditarTurno = ({ turno, show, handleClose, onUpdateTurno }) => {
 						<Form.Label>Mascota (nombre)</Form.Label>
 						<Form.Control
 							type="text"
+							required // Campo requerido
+							minLength={2} // Longitud mínima
+							maxLength={30} // Longitud máxima
 							value={turnoEditSelecc.mascota}
 							onChange={(e) => handleChangeEditar('mascota', e.target.value)}
 						/>
 						<Form.Control.Feedback type="invalid">
-							Ingrese el nombre de la mascota
+							{turnoEditSelecc.mascota.length < 2
+								? 'Ingrese al menos 2 caracteres'
+								: 'El nombre de la mascota no debe exceder los 30 caracteres'}
 						</Form.Control.Feedback>
 					</Form.Group>
 					<Form.Group className="mb-3">
 						<Form.Label>Especie</Form.Label>
 						<Form.Control
 							type="text"
+							required
+							minLength={2} // Longitud mínima
+							maxLength={30} // Longitud máxima
 							value={turnoEditSelecc.especie}
 							onChange={(e) => handleChangeEditar('especie', e.target.value)}
 						/>
@@ -227,6 +253,9 @@ export const EditarTurno = ({ turno, show, handleClose, onUpdateTurno }) => {
 						<Form.Label>Raza</Form.Label>
 						<Form.Control
 							type="text"
+							required
+							minLength={2} // Longitud mínima
+							maxLength={30} // Longitud máxima
 							value={turnoEditSelecc.raza}
 							onChange={(e) => handleChangeEditar('raza', e.target.value)}
 						/>
@@ -237,6 +266,7 @@ export const EditarTurno = ({ turno, show, handleClose, onUpdateTurno }) => {
 					<Form.Group className="mb-3">
 						<Form.Label>Fecha</Form.Label>
 						<DatePicker
+							required
 							selected={turnoEditSelecc.fecha}
 							onChange={(date) => handleChangeEditar('fecha', date)}
 							className="form-control"
@@ -251,6 +281,7 @@ export const EditarTurno = ({ turno, show, handleClose, onUpdateTurno }) => {
 						<Form.Label>Hora</Form.Label>
 						<Form.Control
 							as="select"
+							required
 							value={turnoEditSelecc.hora}
 							onChange={(e) => handleChangeEditar('hora', e.target.value)}
 						>

@@ -30,12 +30,7 @@ const Bienvenida = () => {
 			</div>
 			<h2 className="bienvenida-title">¡Bienvenido a JavaPet!</h2>
 			<div className="cta-button-container">
-				<a
-					href="https://www.facebook.com"
-					className="cta-button"
-					target="_blank"
-					rel="noopener noreferrer"
-				>
+				<a href="/Contactanos" className="cta-button">
 					RESERVA TU CITA AHORA!
 				</a>
 			</div>

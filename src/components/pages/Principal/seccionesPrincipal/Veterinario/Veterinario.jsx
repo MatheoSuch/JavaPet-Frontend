@@ -22,21 +22,22 @@ export const Veterinario = () => {
 				<div className="col-12 col-lg-4 d-flex flex-column justify-content-center align-items-center img-container">
 					<img src={veterinario2} alt="Camila" />
 					<h2>Camila Rodriguez</h2>
-					<p>Peluquería Canina y Felina </p>
+					<p>Peluquería Canina y Felina</p>
 					<p>
 						Experiencia: 8 años en el cuidado y estilismo de mascotas, certificada en
 						varias técnicas de grooming.
 					</p>
 				</div>
 
-				<div className="col-12 col-lg-4 d-flex flex-column justify-content-center align-items-center img-container">
-					<img src={veterinario3} alt="Melissa" />
+				<div className="col-12 col-lg-4 d-flex flex-column justify-content-center align-items-center img-container position-relative">
+					<img src={veterinario3} alt="Melissa" className="veterinario-image" />
 					<h2>Melissa Lopez</h2>
 					<p>Clínica Veterinaria</p>
 					<p>
 						Experiencia: 12 años, con un enfoque en medicina preventiva y tratamiento
 						de enfermedades en mascotas.
 					</p>
+					<div className="not-available-badge">No Disponible</div>
 				</div>
 			</div>
 		</div>

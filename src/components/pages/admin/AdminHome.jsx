@@ -46,7 +46,6 @@ export const AdminHome = () => {
 
 	return (
 		<div>
-			<NavBar />
 			<div className="admin-home-container">
 				<div className="admin-welcome">
 					<h1>Bienvenido al Panel de Administración</h1>
@@ -65,7 +64,6 @@ export const AdminHome = () => {
 					<Bar data={chartData} />
 				</div>
 			</div>
-			<Footer />
 		</div>
 	);
 };
