@@ -1,14 +1,13 @@
-/* General styles */
 .register-question {
 	color: #000;
-	font-size: 1rem; /* Base size */
+	font-size: 1rem;
 }
 
 .register-link {
 	color: #77dcf5;
 	text-decoration: none;
 	font-weight: bold;
-	font-size: 1rem; /* Base size */
+	font-size: 1rem;
 }
 
 .register-link:hover {
@@ -19,8 +18,8 @@
 .tituloLogin {
 	color: #000000;
 	font-weight: bold;
-	font-size: 2.5rem; /* Base size */
-	text-shadow: 2px 2px 4px rgba(92, 207, 252, 0.774); /* Add shadow to text */
+	font-size: 2.5rem;
+	text-shadow: 2px 2px 4px rgba(92, 207, 252, 0.774);
 }
 
 .btn-celeste-crud {
@@ -66,25 +65,25 @@
 .font-celeste-crud {
 	color: #000000 !important;
 	font-weight: bold;
-	font-size: 1.2rem; /* Base size */
+	font-size: 1.2rem;
 	text-shadow: 2px 2px 4px rgba(92, 207, 252, 0.774);
 }
 
 .input-bg {
-	background-color: #f5f5f5; /* Change input background color */
-	border: 1px solid #ddd; /* Add border */
+	background-color: #f5f5f5;
+	border: 1px solid #ddd;
 }
 
 .input-container {
 	position: relative;
-	margin-bottom: 1.5rem; /* Add margin bottom to create space for error message */
+	margin-bottom: 1.5rem;
 }
 
 .error-message {
 	color: rgb(221, 1, 38);
 	font-size: 0.9rem;
 	position: absolute;
-	bottom: -1.5rem; /* Position error message below input */
+	bottom: -1.5rem;
 	left: 0;
 	white-space: nowrap;
 }
@@ -102,42 +101,41 @@
 }
 
 .loginImg {
-	width: 100%; /* Makes image responsive */
-	max-width: 500px; /* Maximum size for the image */
-	height: auto; /* Maintains aspect ratio */
+	width: 100%;
+	max-width: 500px;
+	height: auto;
 }
 
-/* Media queries for responsiveness */
 @media (max-width: 768px) {
 	.tituloLogin {
-		font-size: 2rem; /* Smaller size for smaller screens */
+		font-size: 2rem;
 	}
 	.font-celeste-crud,
 	.register-question,
 	.register-link {
-		font-size: 1rem; /* Adjust size for mobile devices */
+		font-size: 1rem;
 	}
 	.btn-celeste-crud {
-		height: 45px; /* Adjust button height */
-		line-height: 35px; /* Adjust button line height */
+		height: 45px;
+		line-height: 35px;
 	}
 }
 
 @media (max-width: 576px) {
 	.tituloLogin {
-		font-size: 1.8rem; /* Smaller size for smaller screens */
+		font-size: 1.8rem;
 	}
 	.font-celeste-crud,
 	.register-question,
 	.register-link {
-		font-size: 0.9rem; /* Adjust size for smaller devices */
+		font-size: 0.9rem;
 	}
 	.btn-celeste-crud {
-		height: 40px; /* Adjust button height */
-		line-height: 30px; /* Adjust button line height */
+		height: 40px;
+		line-height: 30px;
 	}
 	.error-message {
-		position: static; /* Change position to static for very small screens */
+		position: static;
 		transform: none;
 		margin-top: 5px;
 	}

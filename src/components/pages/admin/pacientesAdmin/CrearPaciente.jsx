@@ -89,15 +89,6 @@ export const CrearUsuario = ({ onUsuarioCreated }) => {
 			});
 		}
 
-		console.log('Datos a enviar:', {
-			nombre,
-			apellido,
-			email,
-			telefono,
-			password,
-			rol,
-		});
-
 		await guardarUsuarioDB(nombre, apellido, email, telefono, password, rol);
 	};
 
@@ -127,8 +118,6 @@ export const CrearUsuario = ({ onUsuarioCreated }) => {
 				}
 			);
 
-			console.log('Respuesta del servidor:', resp);
-
 			if (resp.status === 201) {
 				Swal.fire({
 					icon: 'success',
@@ -149,7 +138,6 @@ export const CrearUsuario = ({ onUsuarioCreated }) => {
 				throw new Error('Error al crear usuario');
 			}
 		} catch (error) {
-			console.error('Error al guardar el usuario:', error);
 			Swal.fire({
 				icon: 'error',
 				title: 'Oops...',

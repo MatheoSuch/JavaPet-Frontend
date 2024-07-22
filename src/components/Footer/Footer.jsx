@@ -1,5 +1,5 @@
 import React from 'react';
-import './Footer.css'; // Asegúrate de importar el archivo CSS
+import './Footer.css';
 import logo from '../../assets/Logo.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMapMarkerAlt, faEnvelope } from '@fortawesome/free-solid-svg-icons';

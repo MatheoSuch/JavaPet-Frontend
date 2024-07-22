@@ -7,80 +7,116 @@
 	position: relative;
 	background: url('../../../assets/perritonuevo.jpg') no-repeat center center fixed;
 	background-size: cover;
+	overflow: hidden;
 }
 
 .text-container {
 	color: white;
 	text-align: center;
 	z-index: 2;
-	padding: 20px;
-	background-color: rgba(3, 24, 43, 0.6);
-	border-radius: 10px;
+	padding: 30px;
+	background-color: rgba(0, 0, 0, 0.6);
+	border-radius: 15px;
+	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+	max-width: 90%;
+	margin: 0 auto;
 }
 
 .title {
-	font-size: 3rem;
+	font-size: 3.5rem;
 	margin: 0;
-	color: white;
+	color: #f8f9fa;
+	font-weight: 700;
+	text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .subtitle {
-	font-size: 1.5em;
+	font-size: 1.5rem;
 	margin: 10px 0;
-	color: white;
+	color: #f8f9fa;
+	line-height: 1.5;
+	text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.button-container {
+	margin-top: 20px;
+}
+
+.button-link,
+.info-button {
+	display: inline-block;
+	padding: 12px 25px;
+	border-radius: 5px;
+	text-decoration: none;
+	font-size: 1.1rem;
+	transition: background-color 0.3s, transform 0.2s;
+	margin: 10px;
 }
 
 .button-link {
-	padding: 10px 20px;
 	background-color: #007bff;
 	color: #ffffff;
-	border-radius: 5px;
-	margin-top: 20px;
-	text-decoration: none;
-	display: inline-block;
+}
+
+.button-link:hover {
+	background-color: #599ce2;
+	transform: translateY(-2px);
+}
+
+.info-button {
+	background-color: #0a8579;
+	color: #ffffff;
+}
+
+.info-button:hover {
+	background-color: #4dcbdf;
+	transform: translateY(-2px);
 }
 
 @media (max-width: 576px) {
-	.title {
-		font-size: 2rem;
-	}
-
-	.subtitle {
-		font-size: 1rem;
-	}
-
-	.button-link {
-		font-size: 14px;
-		padding: 8px 16px;
-	}
-}
-
-@media (max-width: 768px) {
 	.title {
 		font-size: 2.5rem;
 	}
 
 	.subtitle {
-		font-size: 1.25em;
+		font-size: 1.2rem;
 	}
 
-	.button-link {
-		font-size: 15px;
-		padding: 9px 18px;
+	.button-link,
+	.info-button {
+		font-size: 16px;
+		padding: 10px 20px;
+	}
+}
+
+@media (max-width: 768px) {
+	.title {
+		font-size: 3rem;
+	}
+
+	.subtitle {
+		font-size: 1.3rem;
+	}
+
+	.button-link,
+	.info-button {
+		font-size: 16px;
+		padding: 10px 20px;
 	}
 }
 
 @media (min-width: 992px) {
 	.title {
-		font-size: 3.5rem;
+		font-size: 4rem;
 	}
 
 	.subtitle {
-		font-size: 1.75em;
+		font-size: 1.75rem;
 	}
 
-	.button-link {
-		font-size: 17px;
-		padding: 11px 22px;
+	.button-link,
+	.info-button {
+		font-size: 18px;
+		padding: 12px 24px;
 	}
 }

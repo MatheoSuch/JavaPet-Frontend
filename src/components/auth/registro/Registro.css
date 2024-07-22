@@ -1,12 +1,11 @@
 .tituloRegistro {
 	color: #000000;
 	font-weight: bold;
-	font-size: 3.5rem; /* Aumenta el tamaño de la fuente */
-	text-align: center; /* Centra el texto */
-	text-shadow: 2px 2px 4px rgba(92, 207, 252, 0.774); /* Añade sombra al texto */
+	font-size: 3.5rem;
+	text-align: center;
+	text-shadow: 2px 2px 4px rgba(92, 207, 252, 0.774);
 }
 
-/* Estilos generales */
 .form-group {
 	margin-bottom: 20px;
 }
@@ -16,13 +15,11 @@
 	color: #6c757d;
 }
 
-/* Estilos para etiquetas */
 .form-label {
 	color: #000000;
 	font-weight: bold;
 }
 
-/* Estilos para inputs */
 .form-control {
 	border-radius: 5px;
 	border-color: #000000;
@@ -33,13 +30,11 @@
 	box-shadow: 0 0 0 0.2rem rgba(59, 242, 248, 0.863);
 }
 
-/* Estilos para checkbox */
 .form-check-label {
 	color: #006172;
 	font-weight: bold;
 }
 
-/* Estilos para botón */
 .btn-primary {
 	min-width: 100px;
 	height: 46px;
@@ -85,10 +80,10 @@
 }
 
 .registro-form-container {
-	background-color: rgba(121, 195, 224, 0.753); /* Color de fondo con opacidad */
+	background-color: rgba(121, 195, 224, 0.753);
 	padding: 10px;
 	border-radius: 30px;
-	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 	display: flex;
 	flex-direction: column;
 	justify-content: center;

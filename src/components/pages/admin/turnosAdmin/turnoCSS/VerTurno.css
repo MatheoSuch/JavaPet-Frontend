@@ -1,57 +1,55 @@
-/* turnoCSS/VerTurnos.css */
-
 .modal-ver-turno .modal-content {
-	background-color: #ffffff; /* Color de fondo del modal */
-	border-radius: 15px; /* Borde redondeado */
-	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra */
+	background-color: #ffffff;
+	border-radius: 15px;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .modal-ver-turno .modal-header {
-	background-color: #007bff !important; /* Color de fondo del encabezado */
-	color: #ffffff; /* Color del texto del encabezado */
-	border-bottom: none; /* Sin borde inferior */
-	border-radius: 15px 15px 0 0; /* Borde redondeado solo arriba */
+	background-color: #007bff !important;
+	color: #ffffff;
+	border-bottom: none;
+	border-radius: 15px 15px 0 0;
 }
 
 .modal-ver-turno .modal-title {
-	font-size: 1.5rem; /* Tamaño de fuente del título */
+	font-size: 1.5rem;
 }
 
 .modal-ver-turno .modal-body {
-	padding: 15px 20px; /* Espaciado interno del cuerpo */
+	padding: 15px 20px;
 }
 
 .modal-ver-turno .modal-footer {
-	border-top: none; /* Sin borde superior en el pie de página */
-	justify-content: flex-end; /* Alinea los botones al final */
+	border-top: none;
+	justify-content: flex-end;
 }
 
 .modal-ver-turno .form-control {
-	border: 1px solid #ced4da; /* Borde de los campos de entrada */
-	border-radius: 5px; /* Borde redondeado */
+	border: 1px solid #ced4da;
+	border-radius: 5px;
 }
 
 .modal-ver-turno .form-control:focus {
-	border-color: #80bdff; /* Color del borde al enfocar */
-	box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25); /* Sombra al enfocar */
+	border-color: #80bdff;
+	box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
 }
 
 .modal-ver-turno .btn-primary {
-	background-color: #237ab4; /* Color de fondo del botón primario */
-	border-color: #000000; /* Color del borde del botón primario */
+	background-color: #237ab4;
+	border-color: #000000;
 }
 
 .modal-ver-turno .btn-primary:hover {
-	background-color: #0b2d9c; /* Color de fondo al pasar el mouse */
-	border-color: #000000; /* Color del borde al pasar el mouse */
+	background-color: #0b2d9c;
+	border-color: #000000;
 }
 
 .modal-ver-turno .btn-secondary {
-	background-color: #800404; /* Color de fondo del botón secundario */
-	border-color: #000000; /* Color del borde del botón secundario */
+	background-color: #800404;
+	border-color: #000000;
 }
 
 .modal-ver-turno .btn-secondary:hover {
-	background-color: #ff0000; /* Color de fondo al pasar el mouse */
-	border-color: #000000; /* Color del borde al pasar el mouse */
+	background-color: #ff0000;
+	border-color: #000000;
 }

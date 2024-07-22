@@ -8,7 +8,7 @@ import { format } from 'date-fns';
 import { EditarTurno } from './EditarTurno';
 import { CrearTurno } from './CrearTurno';
 import { eliminarTurno } from './EliminarTurno';
-import { PencilSquare, Trash, Eye } from 'react-bootstrap-icons'; // Importar iconos
+import { PencilSquare, Trash, Eye } from 'react-bootstrap-icons';
 import './turnoCSS/ListaTurnos.css';
 import ModalDetalleTurno from './VerTurno';
 
@@ -16,7 +16,7 @@ export const ListaTurnos = () => {
 	const [cargarTurnos, setCargarTurnos] = useState([]);
 	const [showEditar, setShowEditar] = useState(false);
 	const [turnoSeleccionado, setTurnoSeleccionado] = useState(null);
-	const [showDetails, setShowDetails] = useState(false); // Estado para controlar la visibilidad del modal de detalles
+	const [showDetails, setShowDetails] = useState(false);
 	const navigate = useNavigate();
 
 	const listaTurnosBack = async () => {
@@ -26,14 +26,22 @@ export const ListaTurnos = () => {
 		} catch (error) {
 			if (error.response && error.response.status === 401) {
 				localStorage.removeItem('token');
-				navigate('/login', { replace: true });
-			} else {
-				console.error('Error al cargar la lista de turnos:', error);
 				Swal.fire({
-					icon: 'error',
-					title: 'Oops...',
-					text: 'No se pudo cargar la lista de turnos. Inténtalo de nuevo más tarde.',
+					icon: 'warning',
+					title: 'Sesión Expirada',
+					text: 'Tu sesión ha expirado. Por favor, inicie sesión nuevamente.',
+					confirmButtonColor: '#3085d6',
+					confirmButtonText: 'Iniciar sesión',
+					allowOutsideClick: false,
+					allowEscapeKey: false,
+					showCancelButton: false,
+				}).then((result) => {
+					if (result.isConfirmed) {
+						navigate('/login', { replace: true });
+					}
 				});
+			} else {
+				console.error('Error fetching users:', error);
 			}
 		}
 	};
@@ -65,7 +73,6 @@ export const ListaTurnos = () => {
 			await eliminarTurno(turnoId);
 			listaTurnosBack();
 		} catch (error) {
-			console.error('Error al eliminar el turno:', error);
 			Swal.fire({
 				icon: 'error',
 				title: 'Oops...',
@@ -83,8 +90,8 @@ export const ListaTurnos = () => {
 		setShowDetails(false);
 	};
 
-	const onTurnoCreado = (nuevoTurno) => {
-		setCargarTurnos([...cargarTurnos, nuevoTurno]);
+	const onTurnoCreado = () => {
+		listaTurnosBack();
 	};
 
 	return (

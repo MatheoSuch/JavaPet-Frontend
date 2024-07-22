@@ -1,5 +1,3 @@
-/* turnoCSS/ListaTurnos.css */
-
 .table-responsive {
 	margin: 0 auto;
 	padding: 10px;
@@ -16,8 +14,8 @@
 }
 
 .tabla-turnos th {
-	background-color: #70098f !important; /* Cambia el color de fondo del encabezado */
-	color: #ffffff !important; /* Color del texto en el encabezado */
+	background-color: #70098f !important;
+	color: #ffffff !important;
 	text-align: center;
 }
 
@@ -29,8 +27,8 @@
 
 .acciones-container {
 	display: flex;
-	justify-content: flex-start; /* Ajusta la alineación de los botones a la izquierda */
-	gap: 10px; /* Espacio entre los botones */
+	justify-content: flex-start;
+	gap: 10px;
 }
 
 .table tbody td {
@@ -197,7 +195,7 @@ button:hover {
 @media (min-width: 1200px) {
 	.table tbody td {
 		font-size: 0.9rem !important;
-		padding: 0.75rem !important; /* Ajusta el padding según tus necesidades */
+		padding: 0.75rem !important;
 	}
 
 	button {

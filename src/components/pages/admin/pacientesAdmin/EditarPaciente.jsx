@@ -47,10 +47,8 @@ export const EditarPaciente = ({
 		const isValid = validarFormulario();
 		if (isValid) {
 			try {
-				console.log('Datos enviados para editar paciente:', pacienteEditSelecc);
 				await editarPacienteDB(pacienteEditSelecc);
 			} catch (error) {
-				console.error('Error al editar paciente:', error);
 				Swal.fire({
 					icon: 'error',
 					title: 'Oops...',
@@ -115,7 +113,6 @@ export const EditarPaciente = ({
 
 	const editarPacienteDB = async (usuario) => {
 		try {
-			console.log('Enviando solicitud para editar paciente con ID:', usuario._id);
 			const { _id, nombre, apellido, email, telefono, rol } = usuario;
 			const resp = await javaPetApi.put(`/admin/editarPaciente/${_id}`, {
 				nombre,
@@ -130,15 +127,13 @@ export const EditarPaciente = ({
 					title: '¡Paciente editado!',
 					text: 'El paciente se ha editado correctamente.',
 				});
-				onUpdatePaciente(usuario); // Llama a la función para actualizar la lista de usuarios
+				onUpdatePaciente(usuario);
 				handleClose();
 			} else {
 				throw new Error('Error al editar paciente');
 			}
 		} catch (error) {
-			console.log('Error en la solicitud de edición de paciente:', error);
 			if (error.response) {
-				console.log('Respuesta del servidor:', error.response.data);
 				if (error.response.data.msg.includes('correo electrónico ya existe')) {
 					Swal.fire({
 						icon: 'error',

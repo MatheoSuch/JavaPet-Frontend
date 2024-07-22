@@ -1,20 +1,34 @@
 import React from 'react';
 import './Navbar.css';
-import { Navbar, Container, Nav } from 'react-bootstrap';
+import { Navbar, Nav } from 'react-bootstrap';
 import logo from '../../assets/Logo.png';
 import { Link, useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
 
 const NavBar = () => {
-	let session = JSON.parse(sessionStorage.getItem('stateSession')) || false;
+	const session = localStorage.getItem('token') !== null;
+	const role = localStorage.getItem('rol');
 	const navigate = useNavigate();
 
-	const handleClose = () => {
-		if (session) {
-			session = false;
-			sessionStorage.setItem('stateSession', JSON.stringify(session));
-			navigate('/Login');
-		}
+	const handleLogout = () => {
+		Swal.fire({
+			title: '¿Estás seguro?',
+			text: '¡Quieres cerrar sesión!',
+			icon: 'warning',
+			showCancelButton: true,
+			confirmButtonColor: '#007bff',
+			cancelButtonColor: '#6c757d',
+			confirmButtonText: 'Sí, cerrar sesión',
+			cancelButtonText: 'Cancelar',
+		}).then((result) => {
+			if (result.isConfirmed) {
+				localStorage.removeItem('token');
+				localStorage.removeItem('rol');
+				navigate('/Login');
+			}
+		});
 	};
+
 	return (
 		<div>
 			<Navbar className="bg-celeste" expand="lg" variant="dark">
@@ -39,23 +53,20 @@ const NavBar = () => {
 								<Link to="/QuienesSomos" className="nav-link custom-nav-link">
 									Quienes Somos
 								</Link>
-								<Link to="/*" className="nav-link custom-nav-link">
+								<Link to="/Planes" className="nav-link custom-nav-link">
 									Nuestros Servicios
 								</Link>
 								<Link to="/Contactanos" className="nav-link custom-nav-link">
 									Contactanos
 								</Link>
-								<Link to="/Adm" className="nav-link custom-nav-link">
-									Administración
-								</Link>
-								<Nav.Link onClick={handleClose} className="custom-nav-link">
-									Logout
+								{role === 'admin' && (
+									<Link to="/AdminHome" className="nav-link custom-nav-link">
+										Administración
+									</Link>
+								)}
+								<Nav.Link onClick={handleLogout} className="custom-nav-link">
+									Cerrar Sesión
 								</Nav.Link>
-								<div className="text-end">
-									<Nav.Link className="custom-nav-link">
-										USUARIO: "Administrador"
-									</Nav.Link>
-								</div>
 							</>
 						) : (
 							<>
@@ -65,7 +76,7 @@ const NavBar = () => {
 								<Link to="/QuienesSomos" className="nav-link custom-nav-link">
 									Quienes Somos
 								</Link>
-								<Link to="/Error404" className="nav-link custom-nav-link">
+								<Link to="/Planes" className="nav-link custom-nav-link">
 									Nuestros Servicios
 								</Link>
 								<Link to="/Contactanos" className="nav-link custom-nav-link">

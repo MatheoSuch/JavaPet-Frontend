@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Swal from 'sweetalert2';
@@ -6,10 +6,13 @@ import withReactContent from 'sweetalert2-react-content';
 import { Envelope } from 'react-bootstrap-icons';
 import './Contacto.css';
 import imgPerrito2 from '../../../assets/contact.jpg';
+import javaPetApi from '../../../api/javaPetApi';
+import { useNavigate } from 'react-router-dom';
 
 const MySwal = withReactContent(Swal);
 
 const Contacto = () => {
+	const navigate = useNavigate();
 	const [formData, setFormData] = useState({
 		nombre: '',
 		apellido: '',
@@ -63,6 +66,36 @@ const Contacto = () => {
 			});
 		}
 	};
+
+	const checkSessionExpiration = async () => {
+		try {
+			await javaPetApi.get('/admin/listaPacientes');
+		} catch (error) {
+			if (error.response && error.response.status === 401) {
+				localStorage.removeItem('token');
+				Swal.fire({
+					icon: 'warning',
+					title: 'Sesión Expirada',
+					text: 'Tu sesión ha expirado. Por favor, inicie sesión nuevamente.',
+					confirmButtonColor: '#3085d6',
+					confirmButtonText: 'Iniciar sesión',
+					allowOutsideClick: false,
+					allowEscapeKey: false,
+					showCancelButton: false,
+				}).then((result) => {
+					if (result.isConfirmed) {
+						navigate('/login', { replace: true });
+					}
+				});
+			} else {
+				console.error('Error verificando la sesión:', error);
+			}
+		}
+	};
+
+	useEffect(() => {
+		checkSessionExpiration();
+	}, []);
 
 	return (
 		<div className="container contact-container">

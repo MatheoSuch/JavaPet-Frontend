@@ -5,9 +5,7 @@ import Swal from 'sweetalert2';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import javaPetApi from '../../../api/javaPetApi';
-import NavBar from '../../Navbar/Navbar';
 import { Container, Row, Col } from 'react-bootstrap';
-import Footer from '../../Footer/Footer';
 import './Registro.css';
 import fondoRegistro2 from '../../../assets/fondoRegistro2.jpg';
 import { useNavigate } from 'react-router-dom';
@@ -19,10 +17,10 @@ export const Registro = () => {
 	const [telefono, setTelefono] = useState('');
 	const [password, setPassword] = useState('');
 	const [confirmPassword, setConfirmPassword] = useState('');
-	const [showPassword, setShowPassword] = useState(false); // State to handle password visibility
-	const [showConfirmPassword, setShowConfirmPassword] = useState(false); // State to handle confirm password visibility
+	const [showPassword, setShowPassword] = useState(false);
+	const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 	const [errorMsg, setErrorMsg] = useState('');
-	const [acceptedTerms, setAcceptedTerms] = useState(false); // State to handle terms acceptance
+	const [acceptedTerms, setAcceptedTerms] = useState(false);
 	const navigate = useNavigate();
 
 	const validateEmail = (email) => {

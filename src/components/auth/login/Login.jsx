@@ -5,8 +5,6 @@ import Swal from 'sweetalert2';
 import { Link, useNavigate } from 'react-router-dom';
 import './Login.css';
 import contacto from '../../../assets/contactoIMG.jpeg';
-import NavBar from '../../Navbar/Navbar';
-import Footer from '../../Footer/Footer';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import alertImage from '../../../assets/Logo.png';
@@ -33,12 +31,13 @@ export const Login = () => {
 
 		try {
 			const resp = await javaPetApi.post('/auth/login', { email, password });
-			console.log(resp);
+
 			localStorage.setItem('token', resp.data.token);
-			if (resp.data.rol === 'usuario') {
-				navigate('/');
+			localStorage.setItem('rol', resp.data.rol);
+			if (resp.data.rol === 'admin') {
+				navigate('/adminHome');
 			} else {
-				navigate('/admin');
+				navigate('/');
 			}
 			Swal.fire({
 				title: '¡Bienvenido a JavaPet!',

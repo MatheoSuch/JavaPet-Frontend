@@ -19,7 +19,6 @@ export const EditarTurno = ({ turno, show, handleClose, onUpdateTurno }) => {
 		hora: '',
 	});
 
-	// Utiliza useEffect para actualizar turnoEditSelecc cuando cambia la prop turno
 	useEffect(() => {
 		if (turno) {
 			setTurnoEditSelecc({
@@ -49,7 +48,6 @@ export const EditarTurno = ({ turno, show, handleClose, onUpdateTurno }) => {
 			try {
 				await editarTurnoDB(turnoEditSelecc);
 			} catch (error) {
-				console.error('Error al editar turno:', error);
 				Swal.fire({
 					icon: 'error',
 					title: 'Oops...',
@@ -57,7 +55,6 @@ export const EditarTurno = ({ turno, show, handleClose, onUpdateTurno }) => {
 				});
 			}
 		} else {
-			// La validación falló, no hacer nada más aquí
 		}
 	};
 
@@ -146,7 +143,6 @@ export const EditarTurno = ({ turno, show, handleClose, onUpdateTurno }) => {
 
 	const editarTurnoDB = async (turno) => {
 		try {
-			console.log('Enviando solicitud para editar turno con ID:', turno.id);
 			const resp = await javaPetApi.put(`/admin/editarTurno/${turno.id}`, turno);
 			if (resp.status === 200) {
 				Swal.fire({
@@ -155,23 +151,21 @@ export const EditarTurno = ({ turno, show, handleClose, onUpdateTurno }) => {
 					text: 'El turno se ha editado correctamente.',
 				});
 
-				// Asegúrate de que resp.data.turnoActualizado siempre tenga un _id válido
 				if (resp.data.turnoActualizado && resp.data.turnoActualizado._id) {
 					onUpdateTurno(resp.data.turnoActualizado);
 				} else {
-					console.error(
-						'El objeto turnoActualizado no tiene un _id válido:',
-						resp.data.turnoActualizado
-					);
-					// Manejo del error o notificación adecuada si falta el _id
+					Swal.fire({
+						icon: 'error',
+						title: 'Error',
+						text: 'El objeto turnoActualizado no tiene un _id válido.',
+					});
 				}
 
-				handleClose(); // Cerrar el modal después de editar
+				handleClose();
 			} else {
 				throw new Error('Error al editar turno');
 			}
 		} catch (error) {
-			console.log('Error en la solicitud de edición de turno:', error);
 			Swal.fire({
 				icon: 'error',
 				title: 'Oops...',
@@ -191,9 +185,9 @@ export const EditarTurno = ({ turno, show, handleClose, onUpdateTurno }) => {
 						<Form.Label>Detalle de la cita</Form.Label>
 						<Form.Control
 							type="text"
-							required // Campo requerido
-							minLength={10} // Longitud mínima
-							maxLength={200} // Longitud máxima
+							required
+							minLength={10}
+							maxLength={200}
 							value={turnoEditSelecc.detalleCita}
 							onChange={(e) => handleChangeEditar('detalleCita', e.target.value)}
 						/>
@@ -223,9 +217,9 @@ export const EditarTurno = ({ turno, show, handleClose, onUpdateTurno }) => {
 						<Form.Label>Mascota (nombre)</Form.Label>
 						<Form.Control
 							type="text"
-							required // Campo requerido
-							minLength={2} // Longitud mínima
-							maxLength={30} // Longitud máxima
+							required
+							minLength={2}
+							maxLength={30}
 							value={turnoEditSelecc.mascota}
 							onChange={(e) => handleChangeEditar('mascota', e.target.value)}
 						/>
@@ -240,8 +234,8 @@ export const EditarTurno = ({ turno, show, handleClose, onUpdateTurno }) => {
 						<Form.Control
 							type="text"
 							required
-							minLength={2} // Longitud mínima
-							maxLength={30} // Longitud máxima
+							minLength={2}
+							maxLength={30}
 							value={turnoEditSelecc.especie}
 							onChange={(e) => handleChangeEditar('especie', e.target.value)}
 						/>
@@ -254,8 +248,8 @@ export const EditarTurno = ({ turno, show, handleClose, onUpdateTurno }) => {
 						<Form.Control
 							type="text"
 							required
-							minLength={2} // Longitud mínima
-							maxLength={30} // Longitud máxima
+							minLength={2}
+							maxLength={30}
 							value={turnoEditSelecc.raza}
 							onChange={(e) => handleChangeEditar('raza', e.target.value)}
 						/>

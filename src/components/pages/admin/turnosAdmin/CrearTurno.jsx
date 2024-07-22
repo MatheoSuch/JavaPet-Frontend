@@ -95,7 +95,6 @@ export const CrearTurno = ({ onTurnoCreado }) => {
 
 		const selectedDate = new Date(fecha);
 		if (selectedDate.getDay() === 0 || selectedDate.getDay() === 6) {
-			// 0 es domingo, 6 es sábado
 			return Swal.fire({
 				icon: 'error',
 				title: 'Oops...',
@@ -119,21 +118,18 @@ export const CrearTurno = ({ onTurnoCreado }) => {
 				mascota,
 				especie,
 				raza,
-				fecha.toISOString().split('T')[0], // Usar la fecha normalizada
+				fecha.toISOString().split('T')[0],
 				hora
 			);
 
 			if (resp.status === 201) {
-				// Mostrar el mensaje de éxito
 				Swal.fire({
 					icon: 'success',
 					title: '¡Turno creado!',
 					text: 'El turno se ha creado correctamente.',
 				}).then((result) => {
 					if (result.isConfirmed || result.isDismissed) {
-						// Actualizar el turno con el ID correcto de la base de datos
 						onTurnoCreado(resp.data);
-						// Limpiar el formulario
 						setFormData({
 							detalleCita: '',
 							veterinario: '',
@@ -143,7 +139,6 @@ export const CrearTurno = ({ onTurnoCreado }) => {
 							fecha: new Date(),
 							hora: '',
 						});
-						// Cerrar el modal después de crear el turno
 						setShow(false);
 					}
 				});
@@ -151,7 +146,6 @@ export const CrearTurno = ({ onTurnoCreado }) => {
 				throw new Error('Error al crear turno');
 			}
 		} catch (error) {
-			console.error('Error al guardar el turno:', error);
 			Swal.fire({
 				icon: 'error',
 				title: 'Oops...',
@@ -188,21 +182,18 @@ export const CrearTurno = ({ onTurnoCreado }) => {
 				}
 			);
 
-			console.log('Respuesta del servidor:', resp);
 			if (resp.status === 201) {
-				// Actualizar el turno con el ID correcto de la base de datos
-				onTurnoCreado();
+				onTurnoCreado(resp.data);
 			}
 
 			return resp;
 		} catch (error) {
-			console.error('Error al guardar el turno:', error);
 			Swal.fire({
 				icon: 'error',
 				title: 'Oops...',
 				text: 'No se pudo crear el turno. Inténtalo de nuevo más tarde.',
 			});
-			throw error; // Lanza el error para manejarlo en handleSubmit
+			throw error;
 		}
 	};
 

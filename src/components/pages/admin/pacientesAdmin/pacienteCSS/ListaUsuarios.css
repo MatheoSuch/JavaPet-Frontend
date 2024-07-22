@@ -196,7 +196,7 @@ button:hover {
 @media (min-width: 1200px) {
 	.table tbody td {
 		font-size: 0.9rem !important;
-		padding: 0.75rem !important; /* Ajusta el padding según tus necesidades */
+		padding: 0.75rem !important;
 	}
 
 	button {

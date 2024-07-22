@@ -3,15 +3,6 @@
 	font-family: 'Poppins', sans-serif;
 }
 
-/* body {
-	background-image: linear-gradient(rgba(0, 0, 0, 0.63), rgba(0, 0, 0, 0.589)),
-		url('assets/fondoB.jpg');
-	background-size: auto;
-	background-position: center;
-	background-repeat: repeat;
-	background-attachment: fixed;
-} */
-
 body {
 	background-image: linear-gradient(rgba(0, 0, 0, 0.459), rgba(0, 0, 0, 0.589)),
 		url('assets/fondop.jpg');

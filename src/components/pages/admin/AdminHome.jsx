@@ -1,19 +1,18 @@
 import React, { useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import './AdminHome.css';
-import NavBar from '../../Navbar/Navbar';
-import Footer from '../../Footer/Footer';
-import { ListaUsuarios } from './pacientesAdmin/ListaUsuarios';
-import { ListaTurnos } from './turnosAdmin/ListaTurnos';
 import { Chart, registerables } from 'chart.js';
 import { Bar } from 'react-chartjs-2';
 import Swal from 'sweetalert2';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUsers, faCalendarCheck } from '@fortawesome/free-solid-svg-icons';
+import javaPetApi from '../../../api/javaPetApi';
 
 Chart.register(...registerables);
 
 export const AdminHome = () => {
+	const navigate = useNavigate();
+
 	const chartData = {
 		labels: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio'],
 		datasets: [
@@ -40,8 +39,35 @@ export const AdminHome = () => {
 		});
 	};
 
+	const checkSessionExpiration = async () => {
+		try {
+			await javaPetApi.get('/admin/listaPacientes');
+		} catch (error) {
+			if (error.response && error.response.status === 401) {
+				localStorage.removeItem('token');
+				Swal.fire({
+					icon: 'warning',
+					title: 'Sesión Expirada',
+					text: 'Tu sesión ha expirado. Por favor, inicie sesión nuevamente.',
+					confirmButtonColor: '#3085d6',
+					confirmButtonText: 'Iniciar sesión',
+					allowOutsideClick: false,
+					allowEscapeKey: false,
+					showCancelButton: false,
+				}).then((result) => {
+					if (result.isConfirmed) {
+						navigate('/login', { replace: true });
+					}
+				});
+			} else {
+				console.error('Error verificando la sesión:', error);
+			}
+		}
+	};
+
 	useEffect(() => {
 		handleWelcomeAlert();
+		checkSessionExpiration();
 	}, []);
 
 	return (

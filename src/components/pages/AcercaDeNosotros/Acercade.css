@@ -15,7 +15,7 @@
 	overflow: hidden;
 	transition: transform 0.3s ease;
 	height: 100%;
-	background-color: #cb9af9; /* Color de fondo púrpura claro */
+	background-color: #cb9af9;
 }
 
 .card:hover {
@@ -26,12 +26,12 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	height: 180px; /* Altura fija para todas las imágenes */
+	height: 180px;
 }
 
 .card-img-top {
-	width: 180px; /* Ancho fijo para todas las imágenes */
-	height: 180px; /* Altura fija para todas las imágenes */
+	width: 180px;
+	height: 180px;
 	border-radius: 50%;
 	object-fit: cover;
 	border: 3px solid #ffffff50;
@@ -40,13 +40,13 @@
 .card-body {
 	padding: 20px;
 	height: 100%;
-	background-color: #dbbbfa; /* Color de fondo púrpura claro */
+	background-color: #dbbbfa;
 }
 
 .card-title {
 	margin-bottom: 10px;
 	font-size: 1.2rem;
-	color: #7f00ff !important; /* Color púrpura */
+	color: #7f00ff !important;
 }
 
 .card-text {

@@ -1,5 +1,5 @@
 {
-  "name": "javapet-frontend",
+  "name": "frontend-git",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -23,6 +23,7 @@
     "chart.js": "^4.4.3",
     "date-fns": "^3.6.0",
     "emailjs": "^4.0.3",
+    "emailjs-com": "^3.2.0",
     "jsonwebtoken": "^9.0.2",
     "react": "^18.2.0",
     "react-bootstrap": "^2.10.3",
