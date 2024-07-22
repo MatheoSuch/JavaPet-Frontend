@@ -27,7 +27,7 @@ export const Planes = () => {
     e.preventDefault();
 
     emailjs
-      .sendForm("service_bi1p8tt", "template_9jzy2qr", e.target, "PKhKvnJcKT-OtLOyJ")
+      .sendForm("service_0q3qw0r", "template_e8gzu9x", e.target, "yABYGQbq-y8zvNKml")
       .then(
         (result) => {
           console.log(result.text);
