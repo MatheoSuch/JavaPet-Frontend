@@ -48,7 +48,7 @@ export const ListaTurnos = () => {
 
 	useEffect(() => {
 		listaTurnosBack();
-	}, []);
+	}, [navigate]);
 
 	const handleEditarClick = (turno) => {
 		setTurnoSeleccionado(turno);

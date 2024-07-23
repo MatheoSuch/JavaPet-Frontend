@@ -47,7 +47,7 @@ export const ListaUsuarios = () => {
 
 	useEffect(() => {
 		listaUsuariosBack();
-	}, []);
+	}, [navigate]);
 
 	const handleEditarClick = (usuario) => {
 		setPacienteSeleccionado(usuario);

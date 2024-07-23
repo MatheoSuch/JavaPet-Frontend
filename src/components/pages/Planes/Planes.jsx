@@ -77,7 +77,7 @@ export const Planes = () => {
 
 	useEffect(() => {
 		checkSessionExpiration();
-	}, []);
+	}, [navigate]);
 
 	return (
 		<>

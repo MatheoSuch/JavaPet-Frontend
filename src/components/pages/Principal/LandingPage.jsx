@@ -42,7 +42,7 @@ export const LandingPage = () => {
 
 	useEffect(() => {
 		checkSessionExpiration();
-	}, []);
+	}, [navigate]);
 
 	return (
 		<div className="contenedor-padre">

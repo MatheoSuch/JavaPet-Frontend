@@ -68,7 +68,7 @@ export const AdminHome = () => {
 	useEffect(() => {
 		handleWelcomeAlert();
 		checkSessionExpiration();
-	}, []);
+	}, [navigate]);
 
 	return (
 		<div>

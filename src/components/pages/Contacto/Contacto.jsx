@@ -95,7 +95,7 @@ const Contacto = () => {
 
 	useEffect(() => {
 		checkSessionExpiration();
-	}, []);
+	}, [navigate]);
 
 	return (
 		<div className="container contact-container">
