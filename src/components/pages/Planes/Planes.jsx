@@ -51,7 +51,7 @@ export const Planes = () => {
 
 	const checkSessionExpiration = async () => {
 		try {
-			await javaPetApi.get('/admin/listaPacientes');
+			await javaPetApi.get('/auth/verify-token');
 		} catch (error) {
 			if (error.response && error.response.status === 401) {
 				localStorage.removeItem('token');
@@ -70,6 +70,7 @@ export const Planes = () => {
 					}
 				});
 			} else {
+				console.error('Error verificando la sesión:', error);
 			}
 		}
 	};

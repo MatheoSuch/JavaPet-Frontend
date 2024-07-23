@@ -41,6 +41,7 @@ export const ListaTurnos = () => {
 					}
 				});
 			} else {
+				console.error('Error verificando la sesión:', error);
 			}
 		}
 	};

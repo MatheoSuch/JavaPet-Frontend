@@ -16,7 +16,7 @@ export const LandingPage = () => {
 
 	const checkSessionExpiration = async () => {
 		try {
-			await javaPetApi.get('/admin/listaPacientes');
+			await javaPetApi.get('/auth/verify-token');
 		} catch (error) {
 			if (error.response && error.response.status === 401) {
 				localStorage.removeItem('token');
@@ -35,6 +35,7 @@ export const LandingPage = () => {
 					}
 				});
 			} else {
+				console.error('Error verificando la sesión:', error);
 			}
 		}
 	};
