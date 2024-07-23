@@ -1,5 +1,5 @@
 import React from 'react';
-import './Planes.css'; // Asegúrate de importar tu archivo CSS
+import './Planes.css';
 import perrito1 from '../../../../../assets/perritobebe.jpg';
 import perrito2 from '../../../../../assets/perrito2.jpg';
 import perrito3 from '../../../../../assets/gatito.jpg';
