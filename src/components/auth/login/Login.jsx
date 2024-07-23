@@ -70,7 +70,8 @@ export const Login = () => {
 				icon: 'error',
 				title: 'Oops...',
 				text: errorMsg,
-				footer: '<a href="#">Recupere su mail o contraseña aquí</a>',
+				footer:
+					'<a href="/Erro404" onclick="window.location.href=\'/Erro404\'; return false;">Recupere su mail o contraseña aquí</a>',
 				customClass: {
 					popup: 'animated shake',
 					confirmButton: 'btn btn-danger',
