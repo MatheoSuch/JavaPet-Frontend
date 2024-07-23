@@ -48,6 +48,7 @@ javaPetApi.interceptors.response.use(
 					allowOutsideClick: false,
 					allowEscapeKey: false,
 				});
+				return Promise.resolve();
 			} else {
 				console.error('Error en la solicitud:', error.response.status);
 			}

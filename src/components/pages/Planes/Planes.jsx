@@ -320,7 +320,6 @@ export const Planes = () => {
 					<p>En caso de ser necesario.</p>
 				</div>
 			</div>
-
 			{modalVisible && (
 				<div className="modalPlanes">
 					<div className="modal-content-planes">
@@ -329,17 +328,17 @@ export const Planes = () => {
 						</span>
 						<h2>Pedir más información sobre {selectedPlan}</h2>
 						<form onSubmit={handleFormSubmit}>
-							<label>
+							<label htmlFor="name">
 								Nombre:
-								<input type="text" name="name" required />
+								<input type="text" id="name" name="name" required />
 							</label>
-							<label>
+							<label htmlFor="email">
 								Correo Electrónico:
-								<input type="email" name="email" required />
+								<input type="email" id="email" name="email" required />
 							</label>
-							<label>
+							<label htmlFor="message">
 								Mensaje:
-								<textarea name="message" required></textarea>
+								<textarea id="message" name="message" required></textarea>
 							</label>
 							<button type="submit">Enviar</button>
 						</form>
