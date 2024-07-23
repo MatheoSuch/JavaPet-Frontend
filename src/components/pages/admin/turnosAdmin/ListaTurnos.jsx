@@ -41,7 +41,6 @@ export const ListaTurnos = () => {
 					}
 				});
 			} else {
-				console.error('Error fetching users:', error);
 			}
 		}
 	};

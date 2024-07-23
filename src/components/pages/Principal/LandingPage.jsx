@@ -35,7 +35,6 @@ export const LandingPage = () => {
 					}
 				});
 			} else {
-				console.error('Error verificando la sesión:', error);
 			}
 		}
 	};

@@ -40,7 +40,6 @@ export const ListaUsuarios = () => {
 					}
 				});
 			} else {
-				console.error('Error fetching users:', error);
 			}
 		}
 	};

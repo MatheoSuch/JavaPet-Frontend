@@ -70,7 +70,6 @@ export const Planes = () => {
 					}
 				});
 			} else {
-				console.error('Error verificando la sesión:', error);
 			}
 		}
 	};
