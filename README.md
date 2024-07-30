@@ -48,7 +48,7 @@ Utiliza los siguientes scripts para gestionar el proyecto:
 
 El frontend está desplegado en [Netlify](https://www.netlify.com/). Puedes acceder a la aplicación en:
 
-- [JavaPet Frontend Deployment](https://your-netlify-url.netlify.app)
+- [JavaPet Frontend Deployment](https://java-pet.netlify.app/)
 
 El backend del proyecto está disponible en:
 
