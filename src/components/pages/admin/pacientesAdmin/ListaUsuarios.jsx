@@ -8,7 +8,7 @@ import { EditarPaciente } from './EditarPaciente';
 import { CrearUsuario } from './CrearPaciente';
 import { PencilSquare, Trash, Eye } from 'react-bootstrap-icons';
 import './pacienteCSS/ListaUsuarios.css';
-import ModalDetalleUsuario from './VerPaciente';
+import ModalDetalleUsuario from './VerPaciente.';
 import Swal from 'sweetalert2';
 
 export const ListaUsuarios = () => {

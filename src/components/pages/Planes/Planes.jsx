@@ -8,7 +8,6 @@ import texturaImg from '../../../assets/textura.png';
 import planImg2 from '../../../assets/Cacho-e-gato-juntos-no-chao-posando-pra-foto_3.webp';
 import planImg3 from '../../../assets/186654806-adorable-gato-y-perro-sobre-fondo-blanco-lindos-amigos.jpg';
 import iconoPatita from '../../../assets/icono patita.png';
-import javaPetApi from '../../../api/javaPetApi';
 import { useNavigate } from 'react-router-dom';
 
 export const Planes = () => {
@@ -49,35 +48,7 @@ export const Planes = () => {
 			);
 	};
 
-	const checkSessionExpiration = async () => {
-		try {
-			await javaPetApi.get('/auth/verify-token');
-		} catch (error) {
-			if (error.response && error.response.status === 401) {
-				localStorage.removeItem('token');
-				Swal.fire({
-					icon: 'warning',
-					title: 'Sesión Expirada',
-					text: 'Tu sesión ha expirado. Por favor, inicie sesión nuevamente.',
-					confirmButtonColor: '#3085d6',
-					confirmButtonText: 'Iniciar sesión',
-					allowOutsideClick: false,
-					allowEscapeKey: false,
-					showCancelButton: false,
-				}).then((result) => {
-					if (result.isConfirmed) {
-						navigate('/login', { replace: true });
-					}
-				});
-			} else {
-				console.error('Error verificando la sesión:', error);
-			}
-		}
-	};
-
-	useEffect(() => {
-		checkSessionExpiration();
-	}, [navigate]);
+	useEffect(() => {}, [navigate]);
 
 	return (
 		<>
