@@ -139,4 +139,7 @@
 		transform: none;
 		margin-top: 5px;
 	}
+	.password-toggle-icon {
+		padding-bottom: 26px;
+	}
 }

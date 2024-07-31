@@ -8,8 +8,7 @@ const Servicios = () => {
 		{
 			titulo: 'Servicios de Vacunación',
 			imagen: servicios1,
-			descripcion:
-				'Ofrecemos una gama completa de vacunas para la salud de tu mascota',
+			descripcion: 'Ofrecemos una gama completa de vacunas para tu mascota',
 		},
 		{
 			titulo: 'Servicios de Clinica General',
@@ -30,8 +29,7 @@ const Servicios = () => {
 		{
 			titulo: 'Servicios de Oftalmología',
 			imagen: servicios1,
-			descripcion:
-				'Cuida la vista de tus mascotas con nuestros servicios de oftalmología.',
+			descripcion: 'Cuida su vista con nuestros servicios de oftalmología.',
 		},
 		{
 			titulo: 'Servicios a la comunidad',

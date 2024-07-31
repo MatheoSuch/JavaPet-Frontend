@@ -62,6 +62,14 @@ const Contacto = () => {
 				customClass: {
 					confirmButton: 'my-button-class',
 				},
+			}).then(() => {
+				setFormData({
+					nombre: '',
+					apellido: '',
+					correo: '',
+					mensaje: '',
+				});
+				setErrors({});
 			});
 		}
 	};

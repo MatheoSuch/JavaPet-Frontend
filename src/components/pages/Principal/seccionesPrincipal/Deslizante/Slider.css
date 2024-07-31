@@ -19,13 +19,16 @@
 	justify-content: center;
 	align-items: center;
 	padding: 10px;
+	height: 350px;
+	min-height: 300px;
+	max-height: 350px;
 }
 
 .custom-carousel-item img {
 	width: 100%;
 	height: auto;
-	max-height: 300px;
-	object-fit: contain; /* Asegura que la imagen se ajuste dentro del contenedor manteniendo su proporción */
+	max-height: 250px;
+	object-fit: contain;
 	transition: transform 0.3s ease, box-shadow 0.3s ease;
 	border-radius: 10px;
 	background-color: #28d1e760;
@@ -42,6 +45,9 @@
 	.slider-title {
 		font-size: 32px;
 	}
+	.custom-carousel-item {
+		height: 300px;
+	}
 	.custom-carousel-item img {
 		max-height: 250px;
 	}
@@ -50,6 +56,9 @@
 @media (max-width: 464px) {
 	.slider-title {
 		font-size: 28px;
+	}
+	.custom-carousel-item {
+		height: 250px;
 	}
 	.custom-carousel-item img {
 		max-height: 200px;

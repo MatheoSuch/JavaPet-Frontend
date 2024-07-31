@@ -8,10 +8,10 @@ import texturaImg from '../../../assets/textura.png';
 import planImg2 from '../../../assets/Cacho-e-gato-juntos-no-chao-posando-pra-foto_3.webp';
 import planImg3 from '../../../assets/186654806-adorable-gato-y-perro-sobre-fondo-blanco-lindos-amigos.jpg';
 import iconoPatita from '../../../assets/icono patita.png';
-import { useNavigate } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 
 export const Planes = () => {
-	const navigate = useNavigate();
+	const location = useLocation();
 	const [modalVisible, setModalVisible] = useState(false);
 	const [selectedPlan, setSelectedPlan] = useState(null);
 
@@ -48,7 +48,14 @@ export const Planes = () => {
 			);
 	};
 
-	useEffect(() => {}, [navigate]);
+	useEffect(() => {
+		if (location.hash) {
+			const element = document.querySelector(location.hash);
+			if (element) {
+				element.scrollIntoView({ behavior: 'smooth' });
+			}
+		}
+	}, [location]);
 
 	return (
 		<>
@@ -80,7 +87,7 @@ export const Planes = () => {
 			<h1 className="titulo-principal">Nuestros Planes de Salud</h1>
 
 			<div className="plan-container">
-				<div className="imagen-plan">
+				<div className="imagen-plan" id="plan1">
 					<img
 						src={planImg1}
 						alt="Descripción de la imagen"
@@ -148,7 +155,7 @@ export const Planes = () => {
 				</div>
 			</div>
 
-			<div className="plan-container">
+			<div className="plan-container" id="plan2">
 				<div className="imagen-plan">
 					<img
 						src={planImg2}
@@ -220,7 +227,7 @@ export const Planes = () => {
 				</div>
 			</div>
 
-			<div className="plan-container">
+			<div className="plan-container" id="plan3">
 				<div className="imagen-plan">
 					<img
 						src={planImg3}

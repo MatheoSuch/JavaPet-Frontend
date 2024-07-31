@@ -16,12 +16,23 @@ export const ListaUsuarios = () => {
 	const [showEditar, setShowEditar] = useState(false);
 	const [pacienteSeleccionado, setPacienteSeleccionado] = useState(null);
 	const [showDetails, setShowDetails] = useState(false);
+	const [habilitarBotones, setHabilitarBotones] = useState(false);
 	const navigate = useNavigate();
+
+	const actualizarHabilitacionBotones = (usuarios) => {
+		const contarAdmins = usuarios.filter(
+			(usuario) => usuario.rol === 'admin'
+		).length;
+
+		setHabilitarBotones(contarAdmins >= 2);
+	};
 
 	const listaUsuariosBack = async () => {
 		try {
 			const resp = await javaPetApi.get('/admin/listaPacientes');
-			setCargarUsuarios(resp.data.listaPacientes);
+			const usuarios = resp.data.listaPacientes;
+			setCargarUsuarios(usuarios);
+			actualizarHabilitacionBotones(usuarios);
 		} catch (error) {
 			if (error.response && error.response.status === 401) {
 				localStorage.removeItem('token');
@@ -67,6 +78,7 @@ export const ListaUsuarios = () => {
 			return usuario;
 		});
 		setCargarUsuarios(updatedPacientes);
+		actualizarHabilitacionBotones(updatedPacientes);
 	};
 
 	const handleUsuarioCreated = () => {
@@ -80,6 +92,15 @@ export const ListaUsuarios = () => {
 
 	const handleCloseDetails = () => {
 		setShowDetails(false);
+	};
+
+	const esAdmin = (usuario) => usuario.rol === 'admin';
+
+	const esEditable = (usuario) => {
+		return !esAdmin(usuario) || (esAdmin(usuario) && habilitarBotones);
+	};
+	const esEliminable = (usuario) => {
+		return !esAdmin(usuario) || (esAdmin(usuario) && habilitarBotones);
 	};
 
 	return (
@@ -114,6 +135,7 @@ export const ListaUsuarios = () => {
 											<Button
 												variant="outline-primary"
 												onClick={() => handleEditarClick(usuario)}
+												disabled={!esEditable(usuario)}
 											>
 												<PencilSquare />
 											</Button>
@@ -122,6 +144,7 @@ export const ListaUsuarios = () => {
 												onClick={() =>
 													eliminarPaciente(usuario._id, listaUsuariosBack)
 												}
+												disabled={!esEliminable(usuario)}
 											>
 												<Trash />
 											</Button>

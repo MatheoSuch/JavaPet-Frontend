@@ -53,3 +53,9 @@
 		font-size: 14px;
 	}
 }
+
+@media (max-width: 464px) {
+	.service-card {
+		margin-left: 30px;
+	}
+}

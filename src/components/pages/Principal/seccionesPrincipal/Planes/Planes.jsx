@@ -23,7 +23,7 @@ export const Planes = () => {
 									periódicos y asesoramiento nutricional para garantizar un
 									crecimiento saludable.
 								</p>
-								<Link to="/planes" className="btn-plan">
+								<Link to="/planes#plan1" className="btn-plan">
 									Ver Plan
 								</Link>
 							</div>
@@ -37,7 +37,7 @@ export const Planes = () => {
 									años Incluye controles veterinarios completos, prevención de
 									enfermedades comunes y consejos para el cuidado dental y físico.
 								</p>
-								<Link to="/planes" className="btn-plan">
+								<Link to="/planes#plan2" className="btn-plan">
 									Ver Plan
 								</Link>
 							</div>
@@ -57,7 +57,7 @@ export const Planes = () => {
 									años Este plan ofrece cuidados especializados, incluyendo exámenes
 									geriátricos, manejo de enfermedades crónicas y soporte nutricional.
 								</p>
-								<Link to="/planes" className="btn-plan">
+								<Link to="/planes#plan3" className="btn-plan">
 									Ver Plan
 								</Link>
 							</div>
