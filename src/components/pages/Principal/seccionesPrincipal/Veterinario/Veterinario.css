@@ -11,10 +11,10 @@
 }
 
 .not-available-badge {
-	position: absolute; /* Posiciona el badge sobre la tarjeta */
+	position: absolute;
 	top: 10px;
 	right: 10px;
-	background-color: rgba(255, 0, 0, 0.8); /* Fondo rojo semitransparente */
+	background-color: rgba(255, 0, 0, 0.8);
 	color: white;
 	padding: 5px 10px;
 	border-radius: 5px;
@@ -24,18 +24,20 @@
 
 .row {
 	width: 100%;
-	max-width: 1200px; /* Ancho máximo para la fila */
+	max-width: 1200px;
 	display: flex;
-	justify-content: space-around;
 	flex-wrap: wrap;
+	justify-content: space-around;
+	gap: 25px;
 }
 
 .img-container {
-	position: relative; /* Asegúrate de que el contenedor tenga posición relativa */
-	padding: 15px !important;
-	margin: 10px !important;
-	width: calc(33.333% - 40px); /* Ancho de cada contenedor con espacio entre ellos */
-	background-color: rgba(126, 215, 235, 0.574); /* Fondo blanco suave */
+	position: relative;
+	padding: 15px;
+	margin: 10px;
+	width: 100%;
+	max-width: 300px;
+	background-color: rgba(126, 215, 235, 0.574);
 	border-radius: 10px;
 	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 	transition: transform 0.3s, box-shadow 0.3s;
@@ -81,8 +83,9 @@
 	}
 
 	.img-container {
-		padding: 15px;
-		margin: 10px;
+		padding: 10px;
+		margin: 5px;
+		width: calc(50% - 10px);
 	}
 
 	.img-container img {
@@ -91,8 +94,7 @@
 	}
 
 	.img-container h2 {
-		text-align: center;
-		font-size: 1.1rem;
+		font-size: 1.2rem;
 	}
 
 	.img-container p {
@@ -105,14 +107,19 @@
 		font-size: 28px;
 	}
 
+	.img-container {
+		padding: 8px;
+		margin: 5px;
+		width: 100%;
+	}
+
 	.img-container img {
 		width: 100%;
 		height: auto;
 	}
 
 	.img-container h2 {
-		font-size: 0.9rem;
-		text-align: center;
+		font-size: 1rem;
 	}
 
 	.img-container p {
@@ -120,7 +127,7 @@
 	}
 
 	.not-available-badge {
-		font-size: 1em;
-		padding: 4px 8px;
+		font-size: 0.9em;
+		padding: 4px 6px;
 	}
 }
